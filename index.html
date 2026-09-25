@@ -3,84 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSE Resource Hub</title>
+    <title>CSE All Semesters Resource Hub</title>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-color: #f8f9fa;
-            --text-color: #212529;
+            --bg-color: #f4f7fe;
+            --text-color: #2b3674;
             --card-bg: #ffffff;
-            --primary-color: #0d6efd;
-            --shadow: rgba(0, 0, 0, 0.08);
+            --primary-color: #4318ff;
+            --shadow: 0px 18px 40px rgba(112, 144, 176, 0.12);
         }
 
         [data-theme="dark"] {
-            --bg-color: #121212;
-            --text-color: #e0e0e0;
-            --card-bg: #1e1e1e;
-            --primary-color: #3d8bfd;
-            --shadow: rgba(255, 255, 255, 0.05);
+            --bg-color: #0b1437;
+            --text-color: #ffffff;
+            --card-bg: #111c44;
+            --primary-color: #7551ff;
+            --shadow: 0px 18px 40px rgba(0, 0, 0, 0.4);
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Roboto, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
+            padding: 0;
             transition: all 0.3s ease;
         }
 
+        /* Header */
         header {
-            background: linear-gradient(135deg, #0d6efd, #0b5ed7);
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-            position: relative;
+            background: var(--card-bg);
+            padding: 20px 40px;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 22px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .theme-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.2);
+            background: var(--bg-color);
             border: none;
-            color: white;
-            padding: 8px 15px;
+            color: var(--text-color);
+            padding: 10px 18px;
             border-radius: 20px;
             cursor: pointer;
-            backdrop-filter: blur(5px);
+            font-weight: 600;
         }
 
+        /* Container */
         .container {
-            max-width: 900px;
+            max-width: 1100px;
             margin: 30px auto;
             padding: 0 20px;
         }
 
+        /* Search Box */
         .search-box {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .search-box input {
             width: 100%;
-            padding: 12px 20px;
-            font-size: 16px;
-            border: 2px solid var(--primary-color);
-            border-radius: 25px;
+            padding: 14px 20px 14px 45px;
+            border-radius: 30px;
+            border: 1px solid rgba(0,0,0,0.1);
             background: var(--card-bg);
             color: var(--text-color);
             box-sizing: border-box;
-            margin-bottom: 25px;
             outline: none;
+            font-size: 15px;
         }
 
+        .search-box i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+        }
+
+        /* Semester Tabs (1st to 8th) */
+        .semester-tabs {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        .semester-tabs::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .semester-tabs::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 10px;
+        }
+
+        .tab-btn {
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: none;
+            background: var(--card-bg);
+            color: var(--text-color);
+            cursor: pointer;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .tab-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Grid Cards */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
         }
 
         .card {
             background: var(--card-bg);
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px var(--shadow);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -88,108 +151,262 @@
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px var(--shadow);
+        }
+
+        .badge {
+            background: rgba(67, 24, 255, 0.1);
+            color: var(--primary-color);
+            padding: 5px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            width: fit-content;
+            margin-bottom: 12px;
         }
 
         .card h3 {
-            margin-top: 0;
-            color: var(--primary-color);
+            margin: 0 0 10px 0;
+            font-size: 18px;
+        }
+
+        .card p {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 10px;
         }
 
         .btn {
-            display: inline-block;
-            background-color: var(--primary-color);
+            flex: 1;
+            padding: 10px;
+            border-radius: 12px;
+            border: none;
+            background: var(--primary-color);
             color: white;
             text-decoration: none;
-            padding: 10px 18px;
-            border-radius: 8px;
             text-align: center;
-            font-weight: 600;
-            margin-top: 15px;
-            transition: background 0.2s;
+            font-weight: bold;
+            font-size: 14px;
         }
 
-        .btn:hover {
-            opacity: 0.9;
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            width: 45px;
+            flex: none;
+            cursor: pointer;
+            border-radius: 12px;
         }
     </style>
 </head>
 <body>
 
+    <!-- Header -->
     <header>
-        <button class="theme-btn" onclick="toggleTheme()">🌙 Dark Mode</button>
-        <h1>CSE Department Resource Hub</h1>
-        <p>১ম বর্ষের সব রিসোর্স, নোটস ও অ্যাসাইনমেন্ট</p>
+        <div class="logo">
+            <h1><i class="fa-solid fa-graduation-cap"></i> CSE All Semesters Resource Hub</h1>
+        </div>
+        <button class="theme-btn" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i> Dark Mode</button>
     </header>
 
+    <!-- Main Container -->
     <div class="container">
-        <!-- Search Bar -->
-        <input type="text" id="searchInput" class="search-box" onkeyup="searchResources()" placeholder="বিষয় বা রিসোর্স খুঁজুন...">
+        
+        <!-- Search -->
+        <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchInput" onkeyup="filterResources()" placeholder="যেকোনো বিষয়ের নাম বা কোড দিয়ে খুঁজুন...">
+        </div>
 
-        <!-- Resource Cards Grid -->
+        <!-- 1st to 8th Semester Filter Tabs -->
+        <div class="semester-tabs">
+            <button class="tab-btn active" onclick="filterSemester('all', this)">সব সেমিস্টার</button>
+            <button class="tab-btn" onclick="filterSemester('sem1', this)">১ম সেমিস্টার</button>
+            <button class="tab-btn" onclick="filterSemester('sem2', this)">২য় সেমিস্টার</button>
+            <button class="tab-btn" onclick="filterSemester('sem3', this)">৩য় সেমিস্টার</button>
+            <button class="tab-btn" onclick="filterSemester('sem4', this)">৪র্থ সেমিস্টার</button>
+            <button class="tab-btn" onclick="filterSemester('sem5', this)">৫ম সেমিস্টার</button>
+            <button class="tab-btn" onclick="filterSemester('sem6', this)">৬ষ্ঠ সেমিস্টার</button>
+            <button class="tab-btn" onclick="filterSemester('sem7', this)">৭ম সেমিস্টার</button>
+            <button class="tab-btn" onclick="filterSemester('sem8', this)">৮ম সেমিস্টার</button>
+        </div>
+
+        <!-- Cards Grid -->
         <div class="grid" id="resourceGrid">
-            <div class="card">
+            
+            <!-- 1st Semester -->
+            <div class="card" data-semester="sem1">
                 <div>
-                    <h3>Structured Programming (C)</h3>
-                    <p>লেকচার শিট, হ্যান্ডনোট এবং প্র্যাকটিস কোড ফাইলসমূহ।</p>
+                    <span class="badge">১ম সেমিস্টার</span>
+                    <h3>Structured Programming Language (C)</h3>
+                    <p>C কোডিং প্র্যাকটিস ফাইল, হ্যান্ডনোট ও অ্যাসাইনমেন্ট।</p>
                 </div>
-                <a href="#" target="_blank" class="btn">ডাউনলোড / দেখুন</a>
+                <div class="card-actions">
+                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-download"></i> ডাউনলোড</a>
+                    <button class="btn-outline" onclick="copyLink('#')"><i class="fa-solid fa-link"></i></button>
+                </div>
             </div>
 
-            <div class="card">
+            <div class="card" data-semester="sem1">
                 <div>
-                    <h3>Calculus & Geometry</h3>
-                    <p>ডিফারেনশিয়াল ও ইন্টিগ্রাল ক্যালকুলাসের সমাধান।</p>
-                </div>
-                <a href="#" target="_blank" class="btn">ডাউনলোড / দেখুন</a>
-            </div>
-
-            <div class="card">
-                <div>
+                    <span class="badge">১ম সেমিস্টার</span>
                     <h3>Discrete Mathematics</h3>
-                    <p>গ্রাফ থিওরি, সেট থিওরি ও প্রশ্নের ব্যাংক।</p>
+                    <p>গ্রাফ থিওরি, ট্রুথ টেবিল ও সেটের সলিউশন নোটস।</p>
                 </div>
-                <a href="#" target="_blank" class="btn">ডাউনলোড / দেখুন</a>
+                <div class="card-actions">
+                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-download"></i> ডাউনলোড</a>
+                    <button class="btn-outline" onclick="copyLink('#')"><i class="fa-solid fa-link"></i></button>
+                </div>
             </div>
 
-            <div class="card">
+            <!-- 2nd Semester -->
+            <div class="card" data-semester="sem2">
                 <div>
-                    <h3>Electric Circuits</h3>
-                    <p>সার্কিট ডায়াগ্রাম, থিওরেম ও ল্যাব নোটস।</p>
+                    <span class="badge">২য় সেমিস্টার</span>
+                    <h3>Data Structures</h3>
+                    <p>Array, Linked List, Stack, Queue ও Tree ফাইল।</p>
                 </div>
-                <a href="#" target="_blank" class="btn">ডাউনলোড / দেখুন</a>
+                <div class="card-actions">
+                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-download"></i> ডাউনলোড</a>
+                    <button class="btn-outline" onclick="copyLink('#')"><i class="fa-solid fa-link"></i></button>
+                </div>
             </div>
+
+            <div class="card" data-semester="sem2">
+                <div>
+                    <span class="badge">২য় সেমিস্টার</span>
+                    <h3>Object Oriented Programming (C++)</h3>
+                    <p>Class, Object, Inheritance, Polymorphism নোটস।</p>
+                </div>
+                <div class="card-actions">
+                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-download"></i> ডাউনলোড</a>
+                    <button class="btn-outline" onclick="copyLink('#')"><i class="fa-solid fa-link"></i></button>
+                </div>
+            </div>
+
+            <!-- 3rd Semester -->
+            <div class="card" data-semester="sem3">
+                <div>
+                    <span class="badge">৩য় সেমিস্টার</span>
+                    <h3>Algorithms</h3>
+                    <p>Sorting, Searching, Greedy & Dynamic Programming.</p>
+                </div>
+                <div class="card-actions">
+                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-download"></i> ডাউনলোড</a>
+                    <button class="btn-outline" onclick="copyLink('#')"><i class="fa-solid fa-link"></i></button>
+                </div>
+            </div>
+
+            <!-- 4th Semester -->
+            <div class="card" data-semester="sem4">
+                <div>
+                    <span class="badge">৪র্থ সেমিস্টার</span>
+                    <h3>Database Management System (DBMS)</h3>
+                    <p>SQL Queries, ER Diagram, Normalization শিট।</p>
+                </div>
+                <div class="card-actions">
+                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-download"></i> ডাউনলোড</a>
+                    <button class="btn-outline" onclick="copyLink('#')"><i class="fa-solid fa-link"></i></button>
+                </div>
+            </div>
+
+            <!-- 5th Semester -->
+            <div class="card" data-semester="sem5">
+                <div>
+                    <span class="badge">৫ম সেমিস্টার</span>
+                    <h3>Operating Systems</h3>
+                    <p>Process Management, Memory Management & Threads.</p>
+                </div>
+                <div class="card-actions">
+                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-download"></i> ডাউনলোড</a>
+                    <button class="btn-outline" onclick="copyLink('#')"><i class="fa-solid fa-link"></i></button>
+                </div>
+            </div>
+
+            <!-- 6th Semester -->
+            <div class="card" data-semester="sem6">
+                <div>
+                    <span class="badge">৬ষ্ঠ সেমিস্টার</span>
+                    <h3>Computer Networks</h3>
+                    <p>OSI Model, TCP/IP, IP Addressing & Subnetting.</p>
+                </div>
+                <div class="card-actions">
+                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-download"></i> ডাউনলোড</a>
+                    <button class="btn-outline" onclick="copyLink('#')"><i class="fa-solid fa-link"></i></button>
+                </div>
+            </div>
+
+            <!-- 7th Semester -->
+            <div class="card" data-semester="sem7">
+                <div>
+                    <span class="badge">৭ম সেমিস্টার</span>
+                    <h3>Artificial Intelligence & ML</h3>
+                    <p>Search Algorithms, Neural Networks, Python Code.</p>
+                </div>
+                <div class="card-actions">
+                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-download"></i> ডাউনলোড</a>
+                    <button class="btn-outline" onclick="copyLink('#')"><i class="fa-solid fa-link"></i></button>
+                </div>
+            </div>
+
+            <!-- 8th Semester -->
+            <div class="card" data-semester="sem8">
+                <div>
+                    <span class="badge">৮ম সেমিস্টার</span>
+                    <h3>Thesis / Final Project & Cyber Security</h3>
+                    <p>প্রজেক্ট গাইডলাইন, রিসার্চ পেপার রিসোর্স ও নোটস।</p>
+                </div>
+                <div class="card-actions">
+                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-download"></i> ডাউনলোড</a>
+                    <button class="btn-outline" onclick="copyLink('#')"><i class="fa-solid fa-link"></i></button>
+                </div>
+            </div>
+
         </div>
     </div>
 
+    <!-- JS Logic -->
     <script>
-        // Dark Mode Functionality
         function toggleTheme() {
-            const body = document.body;
-            const btn = document.querySelector('.theme-btn');
-            if (body.getAttribute('data-theme') === 'dark') {
-                body.removeAttribute('data-theme');
-                btn.textContent = '🌙 Dark Mode';
-            } else {
-                body.setAttribute('data-theme', 'dark');
-                btn.textContent = '☀️ Light Mode';
-            }
+            document.body.toggleAttribute('data-theme');
         }
 
-        // Live Search Functionality
-        function searchResources() {
-            let input = document.getElementById('searchInput').value.toLowerCase();
-            let cards = document.getElementsByClassName('card');
+        function copyLink(link) {
+            navigator.clipboard.writeText(link);
+            alert("লিংক কপি করা হয়েছে!");
+        }
 
-            for (let i = 0; i < cards.length; i++) {
-                let title = cards[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
-                let desc = cards[i].getElementsByTagName('p')[0].innerText.toLowerCase();
-                if (title.includes(input) || desc.includes(input)) {
-                    cards[i].style.display = "flex";
+        function filterSemester(sem, btn) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            let cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                if (sem === 'all' || card.getAttribute('data-semester') === sem) {
+                    card.style.display = "flex";
                 } else {
-                    cards[i].style.display = "none";
+                    card.style.display = "none";
                 }
-            }
+            });
+        }
+
+        function filterResources() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.querySelectorAll('.card');
+
+            cards.forEach(card => {
+                let text = card.innerText.toLowerCase();
+                if (text.includes(input)) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
+            });
         }
     </script>
 </body>
