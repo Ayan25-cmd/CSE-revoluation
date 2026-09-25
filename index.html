@@ -5,86 +5,192 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSE Resource Hub</title>
     <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --text-color: #212529;
+            --card-bg: #ffffff;
+            --primary-color: #0d6efd;
+            --shadow: rgba(0, 0, 0, 0.08);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --card-bg: #1e1e1e;
+            --primary-color: #3d8bfd;
+            --shadow: rgba(255, 255, 255, 0.05);
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f7f6;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             margin: 0;
-            padding: 0;
-            color: #333;
+            transition: all 0.3s ease;
         }
+
         header {
-            background-color: #0056b3;
+            background: linear-gradient(135deg, #0d6efd, #0b5ed7);
             color: white;
-            padding: 20px;
+            padding: 40px 20px;
             text-align: center;
+            position: relative;
         }
+
+        .theme-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+        }
+
         .container {
-            width: 80%;
-            margin: 20px auto;
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
         }
-        h2 {
-            color: #0056b3;
-            border-bottom: 2px solid #0056b3;
-            padding-bottom: 5px;
+
+        .search-box {
+            width: 100%;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: 2px solid var(--primary-color);
+            border-radius: 25px;
+            background: var(--card-bg);
+            color: var(--text-color);
+            box-sizing: border-box;
+            margin-bottom: 25px;
+            outline: none;
         }
-        .resource-list {
-            list-style: none;
-            padding: 0;
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
         }
-        .resource-item {
-            background: #eef2f5;
-            margin: 10px 0;
-            padding: 15px;
-            border-radius: 5px;
+
+        .card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px var(--shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
             display: flex;
+            flex-direction: column;
             justify-content: space-between;
-            align-items: center;
         }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px var(--shadow);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
         .btn {
-            background-color: #28a745;
+            display: inline-block;
+            background-color: var(--primary-color);
             color: white;
             text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 4px;
-            font-weight: bold;
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: background 0.2s;
         }
+
         .btn:hover {
-            background-color: #218838;
+            opacity: 0.9;
         }
     </style>
 </head>
 <body>
 
     <header>
+        <button class="theme-btn" onclick="toggleTheme()">🌙 Dark Mode</button>
         <h1>CSE Department Resource Hub</h1>
-        <p>১ম বর্ষের সকল নোট, সিলেবাস এবং অ্যাসাইনমেন্টের কালেকশন</p>
+        <p>১ম বর্ষের সব রিসোর্স, নোটস ও অ্যাসাইনমেন্ট</p>
     </header>
 
     <div class="container">
-        <h2>১ম সেমিস্টার রিসোর্সসমূহ</h2>
-        <ul class="resource-list">
-            <li class="resource-item">
-                <span><strong>Structured Programming (C):</strong> লেকচার শিট ও কোড ফাইল</span>
+        <!-- Search Bar -->
+        <input type="text" id="searchInput" class="search-box" onkeyup="searchResources()" placeholder="বিষয় বা রিসোর্স খুঁজুন...">
+
+        <!-- Resource Cards Grid -->
+        <div class="grid" id="resourceGrid">
+            <div class="card">
+                <div>
+                    <h3>Structured Programming (C)</h3>
+                    <p>লেকচার শিট, হ্যান্ডনোট এবং প্র্যাকটিস কোড ফাইলসমূহ।</p>
+                </div>
                 <a href="#" target="_blank" class="btn">ডাউনলোড / দেখুন</a>
-            </li>
-            <li class="resource-item">
-                <span><strong>Calculus & Analytical Geometry:</strong> হ্যান্ডনোট ও অ্যাসাইনমেন্ট</span>
+            </div>
+
+            <div class="card">
+                <div>
+                    <h3>Calculus & Geometry</h3>
+                    <p>ডিফারেনশিয়াল ও ইন্টিগ্রাল ক্যালকুলাসের সমাধান।</p>
+                </div>
                 <a href="#" target="_blank" class="btn">ডাউনলোড / দেখুন</a>
-            </li>
-            <li class="resource-item">
-                <span><strong>Discrete Mathematics:</strong> কোশ্চেন ব্যাংক ও সলিউশন</span>
+            </div>
+
+            <div class="card">
+                <div>
+                    <h3>Discrete Mathematics</h3>
+                    <p>গ্রাফ থিওরি, সেট থিওরি ও প্রশ্নের ব্যাংক।</p>
+                </div>
                 <a href="#" target="_blank" class="btn">ডাউনলোড / দেখুন</a>
-            </li>
-            <li class="resource-item">
-                <span><strong>Electric Circuits:</strong> সার্কিট ডায়াগ্রাম ও নোটস</span>
+            </div>
+
+            <div class="card">
+                <div>
+                    <h3>Electric Circuits</h3>
+                    <p>সার্কিট ডায়াগ্রাম, থিওরেম ও ল্যাব নোটস।</p>
+                </div>
                 <a href="#" target="_blank" class="btn">ডাউনলোড / দেখুন</a>
-            </li>
-        </ul>
+            </div>
+        </div>
     </div>
 
+    <script>
+        // Dark Mode Functionality
+        function toggleTheme() {
+            const body = document.body;
+            const btn = document.querySelector('.theme-btn');
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                btn.textContent = '🌙 Dark Mode';
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                btn.textContent = '☀️ Light Mode';
+            }
+        }
+
+        // Live Search Functionality
+        function searchResources() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.getElementsByClassName('card');
+
+            for (let i = 0; i < cards.length; i++) {
+                let title = cards[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
+                let desc = cards[i].getElementsByTagName('p')[0].innerText.toLowerCase();
+                if (title.includes(input) || desc.includes(input)) {
+                    cards[i].style.display = "flex";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+    </script>
 </body>
 </html>
