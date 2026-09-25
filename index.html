@@ -190,7 +190,11 @@
             text-decoration: none;
             text-align: center;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 13px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
         }
 
         .btn-outline {
@@ -264,79 +268,95 @@
                 </div>
             </div>
 
-            <!-- 2nd Semester Courses (Updated from your syllabus) -->
+            <!-- 2nd Semester Courses (Theory & Math Separated) -->
+            
+            <!-- CSE 121 -->
             <div class="card" data-semester="sem2">
                 <div>
                     <span class="badge">২য় সেমিস্টার | Credit: 3.0</span>
                     <h3>CSE 121: Structured Programming Language</h3>
-                    <p>C প্রোগামিং লেকচার শিট, হ্যান্ডনোট এবং প্র্যাকটিস কোড সলিউশন।</p>
+                    <p>C প্রোগামিং কনসেপ্ট, থিওরি লেকচার এবং কোডিং/প্রবলেম সলভিং পার্ট।</p>
                 </div>
-                <div class="card-actions">
-                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-download"></i> রিসোর্স দেখুন</a>
-                    <button class="btn-outline" onclick="copyLink('#')"><i class="fa-solid fa-link"></i></button>
+                <div class="card-actions" style="flex-direction: column; gap: 8px;">
+                    <div style="display: flex; gap: 8px; width: 100%;">
+                        <a href="#" target="_blank" class="btn" style="background: #2b3674;"><i class="fa-solid fa-book"></i> Theory Part</a>
+                        <a href="#" target="_blank" class="btn"><i class="fa-solid fa-code"></i> Code & Practice</a>
+                    </div>
                 </div>
             </div>
 
+            <!-- CSE 122 -->
             <div class="card" data-semester="sem2">
                 <div>
                     <span class="badge">২য় সেমিস্টার | Credit: 1.5</span>
                     <h3>CSE 122: Structured Programming Language Sessional</h3>
-                    <p>C প্রোগামিং ল্যাব রিপোর্ট, প্রবলেম সলভিং ও কোড ফাইলসমূহ।</p>
+                    <p>C প্রোগামিং ল্যাব রিপোর্ট, ল্যাব ম্যানুয়াল ও অ্যাসাইনমেন্ট সলিউশন।</p>
                 </div>
                 <div class="card-actions">
-                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-download"></i> রিসোর্স দেখুন</a>
+                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-flask"></i> Lab Resources</a>
                     <button class="btn-outline" onclick="copyLink('#')"><i class="fa-solid fa-link"></i></button>
                 </div>
             </div>
 
+            <!-- GED 121 -->
             <div class="card" data-semester="sem2">
                 <div>
                     <span class="badge">২য় সেমিস্টার | Credit: 2.0</span>
                     <h3>GED 121: History of the Emergence of Bangladesh</h3>
-                    <p>বাংলাদেশের ইতিহাসের গুরুত্বপূর্ণ লেকচার শিট, হ্যান্ডনোট ও প্রশ্ন ব্যাংক।</p>
+                    <p>বাংলাদেশের ইতিহাস, গুরুত্বপূর্ণ লেকচার শিট, হ্যান্ডনোট ও থিওরি প্রশ্ন।</p>
                 </div>
                 <div class="card-actions">
-                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-download"></i> রিসোর্স দেখুন</a>
+                    <a href="#" target="_blank" class="btn" style="background: #2b3674;"><i class="fa-solid fa-book"></i> Theory Notes</a>
                     <button class="btn-outline" onclick="copyLink('#')"><i class="fa-solid fa-link"></i></button>
                 </div>
             </div>
 
+            <!-- ENG 121 -->
             <div class="card" data-semester="sem2">
                 <div>
                     <span class="badge">২য় সেমিস্টার | Credit: 3.0</span>
                     <h3>ENG 121: English Writing and Listening</h3>
-                    <p>রাইটিং স্কিল, লিসেনিং শিট ও পরীক্ষার অনুশীলনী রিসোর্স।</p>
+                    <p>গ্রামার ও রাইটিং রুলস (Theory) এবং লিসেনিং ও অনুশীলনী (Practice)।</p>
                 </div>
-                <div class="card-actions">
-                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-download"></i> রিসোর্স দেখুন</a>
-                    <button class="btn-outline" onclick="copyLink('#')"><i class="fa-solid fa-link"></i></button>
+                <div class="card-actions" style="flex-direction: column; gap: 8px;">
+                    <div style="display: flex; gap: 8px; width: 100%;">
+                        <a href="#" target="_blank" class="btn" style="background: #2b3674;"><i class="fa-solid fa-book"></i> Theory & Rules</a>
+                        <a href="#" target="_blank" class="btn"><i class="fa-solid fa-pen-nib"></i> Writing Practice</a>
+                    </div>
                 </div>
             </div>
 
+            <!-- MATH 121 -->
             <div class="card" data-semester="sem2">
                 <div>
                     <span class="badge">২য় সেমিস্টার | Credit: 3.0</span>
-                    <h3>MATH 121: MATH II (Vector Analysis, Linear Algebra, Coordinate Geometry and Fourier Analysis)</h3>
-                    <p>ভেক্টর অ্যানালাইসিস, লিনিয়ার অ্যালজেব্রা ও ফোরিয়ার অ্যানালাইসিস এর সলিউশন নোটস।</p>
+                    <h3>MATH 121: MATH II</h3>
+                    <p>Vector Analysis, Linear Algebra, Coordinate Geometry & Fourier Analysis.</p>
                 </div>
-                <div class="card-actions">
-                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-download"></i> রিসোর্স দেখুন</a>
-                    <button class="btn-outline" onclick="copyLink('#')"><i class="fa-solid fa-link"></i></button>
+                <div class="card-actions" style="flex-direction: column; gap: 8px;">
+                    <div style="display: flex; gap: 8px; width: 100%;">
+                        <a href="#" target="_blank" class="btn" style="background: #2b3674;"><i class="fa-solid fa-book"></i> Theory & Formulas</a>
+                        <a href="#" target="_blank" class="btn"><i class="fa-solid fa-calculator"></i> Math Solutions</a>
+                    </div>
                 </div>
             </div>
 
+            <!-- EEE 121 -->
             <div class="card" data-semester="sem2">
                 <div>
                     <span class="badge">২য় সেমিস্টার | Credit: 3.0</span>
                     <h3>EEE 121: Electronic Devices and Circuits</h3>
-                    <p>সার্কিট ডায়াগ্রাম, সেমিকন্ডাক্টর থিওরি ও ইলেকট্রনিক্স ক্লাসনোট।</p>
+                    <p>সেমিকন্ডাক্টর ও সার্কিট কনসেপ্ট (Theory) এবং ম্যাথ সলিউশন/ডায়াগোরাম।</p>
                 </div>
-                <div class="card-actions">
-                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-download"></i> রিসোর্স দেখুন</a>
-                    <button class="btn-outline" onclick="copyLink('#')"><i class="fa-solid fa-link"></i></button>
+                <div class="card-actions" style="flex-direction: column; gap: 8px;">
+                    <div style="display: flex; gap: 8px; width: 100%;">
+                        <a href="#" target="_blank" class="btn" style="background: #2b3674;"><i class="fa-solid fa-book"></i> Theory Notes</a>
+                        <a href="#" target="_blank" class="btn"><i class="fa-solid fa-bolt"></i> Math & Circuits</a>
+                    </div>
                 </div>
             </div>
 
+            <!-- EEE 122 -->
             <div class="card" data-semester="sem2">
                 <div>
                     <span class="badge">২য় সেমিস্টার | Credit: 1.5</span>
@@ -344,31 +364,35 @@
                     <p>ইলেকট্রনিক্স ল্যাব ম্যানুয়াল, সার্কিট সিমুলেশন ও ল্যাব রিপোর্ট।</p>
                 </div>
                 <div class="card-actions">
-                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-download"></i> রিসোর্স দেখুন</a>
+                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-microchip"></i> Lab Sheets</a>
                     <button class="btn-outline" onclick="copyLink('#')"><i class="fa-solid fa-link"></i></button>
                 </div>
             </div>
 
+            <!-- PHY 121 -->
             <div class="card" data-semester="sem2">
                 <div>
                     <span class="badge">২য় সেমিস্টার | Credit: 3.0</span>
                     <h3>PHY 121: Physics I</h3>
-                    <p>ফিজিক্স থিওরি শিট, ফর্মুলা ও প্রবলেম সলভিং লেকচার।</p>
+                    <p>ফিজিক্স থিওরি কনসেপ্ট ও লেকচার এবং গাণিতিক সমস্যার সমাধান (Math)।</p>
                 </div>
-                <div class="card-actions">
-                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-download"></i> রিসোর্স দেখুন</a>
-                    <button class="btn-outline" onclick="copyLink('#')"><i class="fa-solid fa-link"></i></button>
+                <div class="card-actions" style="flex-direction: column; gap: 8px;">
+                    <div style="display: flex; gap: 8px; width: 100%;">
+                        <a href="#" target="_blank" class="btn" style="background: #2b3674;"><i class="fa-solid fa-book"></i> Theory Part</a>
+                        <a href="#" target="_blank" class="btn"><i class="fa-solid fa-square-root-variable"></i> Math Problems</a>
+                    </div>
                 </div>
             </div>
 
+            <!-- PHY 124 -->
             <div class="card" data-semester="sem2">
                 <div>
                     <span class="badge">২য় সেমিস্টার | Credit: 1.0</span>
                     <h3>PHY 124: Basic Physics Sessional</h3>
-                    <p>ফিজিক্স ল্যাব প্র্যাকটিক্যাল নোটস, ডাটা টেবিল ও প্র্যাকটিক্যাল কপি।</p>
+                    <p>ফিজিক্স ল্যাব প্র্যাকটিক্যাল নোটস, ডাটা টেবিল ও রিপোর্ট সলিউশন।</p>
                 </div>
                 <div class="card-actions">
-                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-download"></i> রিসোর্স দেখুন</a>
+                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-atom"></i> Lab Data & Copy</a>
                     <button class="btn-outline" onclick="copyLink('#')"><i class="fa-solid fa-link"></i></button>
                 </div>
             </div>
