@@ -196,7 +196,7 @@
             color: var(--primary);
         }
 
-        /* 3. SEMESTER RESOURCES HUB (AS SHOWN IN IMAGE) */
+        /* 3. SEMESTER RESOURCES HUB */
         .resources-section {
             background: var(--card-bg);
             padding: 28px;
@@ -276,19 +276,41 @@
             box-shadow: var(--shadow);
         }
 
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
         .semester-badge {
             font-size: 12px;
             color: var(--primary);
             font-weight: 600;
-            margin-bottom: 6px;
-            display: inline-block;
+        }
+
+        .credit-badge {
+            font-size: 11px;
+            background: #e2e8f0;
+            color: var(--text-dark);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: 600;
         }
 
         .subject-title {
             font-size: 16px;
             font-weight: 700;
             color: var(--primary-dark);
+            margin-bottom: 6px;
+        }
+
+        .subject-code {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--primary);
             margin-bottom: 8px;
+            display: inline-block;
         }
 
         .subject-desc {
@@ -416,41 +438,19 @@
             <button class="tab-btn" onclick="filterSemester('8th', this)">8th Semester</button>
         </div>
 
-        <!-- Cards Container -->
+        <!-- Subject Cards Grid -->
         <div class="subject-grid" id="subjectGrid">
             
-            <!-- Card 1 -->
-            <div class="subject-card" data-semester="1st">
-                <div>
-                    <span class="semester-badge">1st Semester</span>
-                    <h3 class="subject-title">Structured Programming Language (C)</h3>
-                    <p class="subject-desc">C Coding Practice Files, Handnotes and Assignments.</p>
-                </div>
-                <div class="card-actions">
-                    <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
-                    <a href="#" class="btn-link"><i class="fa-solid fa-link"></i></a>
-                </div>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="subject-card" data-semester="1st">
-                <div>
-                    <span class="semester-badge">1st Semester</span>
-                    <h3 class="subject-title">Discrete Mathematics</h3>
-                    <p class="subject-desc">Graph Theory, Truth Table and Solution Notes of Sets.</p>
-                </div>
-                <div class="card-actions">
-                    <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
-                    <a href="#" class="btn-link"><i class="fa-solid fa-link"></i></a>
-                </div>
-            </div>
-
-            <!-- Card 3 -->
+            <!-- 2nd Semester: Theory - Structured Programming Language -->
             <div class="subject-card" data-semester="2nd">
                 <div>
-                    <span class="semester-badge">2nd Semester</span>
-                    <h3 class="subject-title">Data Structures</h3>
-                    <p class="subject-desc">Array, Linked List, Stack, Queue and Tree files.</p>
+                    <div class="card-top">
+                        <span class="semester-badge">2nd Semester</span>
+                        <span class="credit-badge">3 Credit</span>
+                    </div>
+                    <span class="subject-code">CSE 121</span>
+                    <h3 class="subject-title">Structured Programming Language</h3>
+                    <p class="subject-desc">Theory & Syntax, Flowcharts, Loops, Arrays, Functions, and C Theory Notes.</p>
                 </div>
                 <div class="card-actions">
                     <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
@@ -458,12 +458,16 @@
                 </div>
             </div>
 
-            <!-- Card 4 -->
+            <!-- 2nd Semester: Sessional - Structured Programming Language Sessional -->
             <div class="subject-card" data-semester="2nd">
                 <div>
-                    <span class="semester-badge">2nd Semester</span>
-                    <h3 class="subject-title">Object Oriented Programming (C++)</h3>
-                    <p class="subject-desc">Class, Object, Inheritance, Polymorphism Notes.</p>
+                    <div class="card-top">
+                        <span class="semester-badge">2nd Semester</span>
+                        <span class="credit-badge">1.5 Credit</span>
+                    </div>
+                    <span class="subject-code">CSE 122</span>
+                    <h3 class="subject-title">Structured Programming Language Sessional</h3>
+                    <p class="subject-desc">Lab Code Files, C Programs, Assignments & Practical Implementation.</p>
                 </div>
                 <div class="card-actions">
                     <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
@@ -471,12 +475,16 @@
                 </div>
             </div>
 
-            <!-- Card 5 -->
-            <div class="subject-card" data-semester="3rd">
+            <!-- 2nd Semester: Theory - History of the Emergence of Bangladesh -->
+            <div class="subject-card" data-semester="2nd">
                 <div>
-                    <span class="semester-badge">3rd Semester</span>
-                    <h3 class="subject-title">Algorithms</h3>
-                    <p class="subject-desc">Sorting, Searching, Greedy & Dynamic Programming.</p>
+                    <div class="card-top">
+                        <span class="semester-badge">2nd Semester</span>
+                        <span class="credit-badge">2 Credit</span>
+                    </div>
+                    <span class="subject-code">GED 121</span>
+                    <h3 class="subject-title">History of the Emergence of Bangladesh</h3>
+                    <p class="subject-desc">Historical Background, 1952 Language Movement, 1971 Liberation War Notes.</p>
                 </div>
                 <div class="card-actions">
                     <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
@@ -484,12 +492,101 @@
                 </div>
             </div>
 
-            <!-- Card 6 -->
-            <div class="subject-card" data-semester="4th">
+            <!-- 2nd Semester: Theory - English Writing and Listening -->
+            <div class="subject-card" data-semester="2nd">
                 <div>
-                    <span class="semester-badge">4th Semester</span>
-                    <h3 class="subject-title">Database Management System (DBMS)</h3>
-                    <p class="subject-desc">SQL Queries, ER Diagrams, Normalization Sheets.</p>
+                    <div class="card-top">
+                        <span class="semester-badge">2nd Semester</span>
+                        <span class="credit-badge">3 Credit</span>
+                    </div>
+                    <span class="subject-code">ENG 121</span>
+                    <h3 class="subject-title">English Writing and Listening</h3>
+                    <p class="subject-desc">Essay & Report Writing Techniques, Grammar, and Listening Scripts.</p>
+                </div>
+                <div class="card-actions">
+                    <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
+                    <a href="#" class="btn-link"><i class="fa-solid fa-link"></i></a>
+                </div>
+            </div>
+
+            <!-- 2nd Semester: Math Part - MATH II -->
+            <div class="subject-card" data-semester="2nd">
+                <div>
+                    <div class="card-top">
+                        <span class="semester-badge">2nd Semester</span>
+                        <span class="credit-badge">3 Credit</span>
+                    </div>
+                    <span class="subject-code">MATH 121</span>
+                    <h3 class="subject-title">MATH II (Vector Analysis, Linear Algebra, Geometry & Fourier)</h3>
+                    <p class="subject-desc">Mathematical Formulas, Vector Analysis, Matrices, Coordinate Geometry & Fourier Solutions.</p>
+                </div>
+                <div class="card-actions">
+                    <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
+                    <a href="#" class="btn-link"><i class="fa-solid fa-link"></i></a>
+                </div>
+            </div>
+
+            <!-- 2nd Semester: Theory - Electronic Devices and Circuits -->
+            <div class="subject-card" data-semester="2nd">
+                <div>
+                    <div class="card-top">
+                        <span class="semester-badge">2nd Semester</span>
+                        <span class="credit-badge">3 Credit</span>
+                    </div>
+                    <span class="subject-code">EEE 121</span>
+                    <h3 class="subject-title">Electronic Devices and Circuits</h3>
+                    <p class="subject-desc">Semiconductors, Diodes, Transistors, BJT, FET Theory & Circuit Diagrams.</p>
+                </div>
+                <div class="card-actions">
+                    <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
+                    <a href="#" class="btn-link"><i class="fa-solid fa-link"></i></a>
+                </div>
+            </div>
+
+            <!-- 2nd Semester: Sessional - Electronic Devices and Circuits Sessional -->
+            <div class="subject-card" data-semester="2nd">
+                <div>
+                    <div class="card-top">
+                        <span class="semester-badge">2nd Semester</span>
+                        <span class="credit-badge">1.5 Credit</span>
+                    </div>
+                    <span class="subject-code">EEE 122</span>
+                    <h3 class="subject-title">Electronic Devices and Circuits Sessional</h3>
+                    <p class="subject-desc">Circuit Design Practical Sheets, Oscilloscope Measurements & Lab Reports.</p>
+                </div>
+                <div class="card-actions">
+                    <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
+                    <a href="#" class="btn-link"><i class="fa-solid fa-link"></i></a>
+                </div>
+            </div>
+
+            <!-- 2nd Semester: Theory - Physics I -->
+            <div class="subject-card" data-semester="2nd">
+                <div>
+                    <div class="card-top">
+                        <span class="semester-badge">2nd Semester</span>
+                        <span class="credit-badge">3 Credit</span>
+                    </div>
+                    <span class="subject-code">PHY 121</span>
+                    <h3 class="subject-title">Physics I</h3>
+                    <p class="subject-desc">Mechanics, Waves, Oscillations, Optics, and Thermodynamics Lecture Notes.</p>
+                </div>
+                <div class="card-actions">
+                    <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
+                    <a href="#" class="btn-link"><i class="fa-solid fa-link"></i></a>
+                </div>
+            </div>
+
+            <!-- 2nd Semester: Sessional - Basic Physics Sessional -->
+            <div class="subject-card" data-semester="2nd">
+                <div>
+                    <div class="card-top">
+                        <span class="semester-badge">2nd Semester</span>
+                        <span class="credit-badge">1 Credit</span>
+                    </div>
+                    <span class="subject-code">PHY 124</span>
+                    <h3 class="subject-title">Basic Physics Sessional</h3>
+                    <p class="subject-desc">Physics Lab Experiments, Data Tables, Graph Calculations & Lab Reports.</p>
                 </div>
                 <div class="card-actions">
                     <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
@@ -598,7 +695,8 @@
         cards.forEach(card => {
             const title = card.querySelector('.subject-title').innerText.toLowerCase();
             const desc = card.querySelector('.subject-desc').innerText.toLowerCase();
-            if (title.includes(input) || desc.includes(input)) {
+            const code = card.querySelector('.subject-code').innerText.toLowerCase();
+            if (title.includes(input) || desc.includes(input) || code.includes(input)) {
                 card.style.display = 'flex';
             } else {
                 card.style.display = 'none';
