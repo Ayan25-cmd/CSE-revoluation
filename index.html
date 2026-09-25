@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Portal & Academic Tools</title>
-    <!-- FontAwesome for icons -->
+    <title>Semester Resources Hub & Academic Tools</title>
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary: #4318ff;
-            --primary-dark: #2b3674;
-            --bg-color: #f4f7fe;
+            --primary: #2563eb;
+            --primary-dark: #1e3a8a;
+            --bg-color: #f8fafc;
             --card-bg: #ffffff;
-            --text-color: #2b3674;
-            --text-muted: #a3edda;
-            --border-radius: 20px;
-            --shadow: 0px 18px 40px rgba(112, 144, 176, 0.12);
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --border-radius: 16px;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
         }
 
         * {
@@ -30,23 +30,23 @@
 
         body {
             background-color: var(--bg-color);
-            color: var(--text-color);
-            padding: 20px;
+            color: var(--text-dark);
+            padding: 25px 15px;
             display: flex;
             justify-content: center;
         }
 
         .container {
             width: 100%;
-            max-width: 800px;
+            max-width: 1050px;
             margin: 0 auto;
         }
 
-        /* 1. Countdown Section Styles */
+        /* 1. COUNTDOWN SECTION */
         .countdown-section {
-            background: linear-gradient(135deg, #2b3674 0%, #4318ff 100%);
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
             color: #ffffff;
-            padding: 25px;
+            padding: 22px 28px;
             border-radius: var(--border-radius);
             margin-bottom: 25px;
             box-shadow: var(--shadow);
@@ -54,190 +54,288 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 15px;
         }
 
         .badge-live {
             background: rgba(255, 255, 255, 0.2);
-            padding: 5px 14px;
+            padding: 4px 12px;
             border-radius: 20px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
-            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         .countdown-header h2 {
-            margin-top: 8px;
-            font-size: 22px;
+            margin-top: 6px;
+            font-size: 20px;
             font-weight: 600;
         }
 
         .countdown-timer {
             display: flex;
-            gap: 12px;
+            gap: 10px;
         }
 
         .time-box {
             background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            padding: 10px 16px;
-            border-radius: 12px;
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 14px;
+            border-radius: 10px;
             text-align: center;
-            min-width: 60px;
+            min-width: 55px;
         }
 
         .time-box span {
             display: block;
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 700;
             line-height: 1;
         }
 
         .time-box small {
-            font-size: 12px;
-            opacity: 0.9;
-            margin-top: 4px;
+            font-size: 11px;
+            opacity: 0.85;
+            margin-top: 3px;
             display: block;
         }
 
-        /* 2. CGPA Calculator Section Styles */
+        /* 2. CGPA CALCULATOR SECTION */
         .cgpa-section {
             background: var(--card-bg);
-            padding: 30px;
+            padding: 25px;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
+            margin-bottom: 30px;
         }
 
         .section-header {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 25px;
+            gap: 10px;
+            margin-bottom: 20px;
             color: var(--primary-dark);
         }
 
         .section-header i {
-            font-size: 24px;
+            font-size: 22px;
             color: var(--primary);
         }
 
         .course-row {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 40px;
-            gap: 12px;
-            margin-bottom: 15px;
+            gap: 10px;
+            margin-bottom: 12px;
             align-items: center;
         }
 
         input, select {
             width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #e0e5f2;
-            border-radius: 12px;
+            padding: 10px 14px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
             outline: none;
             font-size: 14px;
-            transition: all 0.3s;
+            background: #f8fafc;
         }
 
         input:focus, select:focus {
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(67, 24, 255, 0.1);
+            background: #fff;
         }
 
         .btn-remove {
-            background: #ff4d4f15;
-            color: #ff4d4f;
+            background: #fee2e2;
+            color: #ef4444;
             border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 16px;
-            transition: 0.2s;
         }
 
         .btn-remove:hover {
-            background: #ff4d4f;
+            background: #ef4444;
             color: white;
         }
 
         .controls {
             display: flex;
-            gap: 15px;
-            margin-top: 20px;
-            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 15px;
         }
 
         .btn {
-            padding: 12px 24px;
-            border-radius: 12px;
+            padding: 10px 20px;
+            border-radius: 10px;
             border: none;
             font-weight: 600;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            transition: all 0.3s;
         }
 
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #3311db;
-        }
-
-        .btn-secondary {
-            background: #f4f7fe;
-            color: var(--primary-dark);
-        }
-
-        .btn-secondary:hover {
-            background: #e2e8f0;
-        }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { background: #1d4ed8; }
+        .btn-secondary { background: #f1f5f9; color: var(--text-dark); }
 
         .result-box {
-            margin-top: 25px;
-            padding: 20px;
-            background: #f4f7fe;
-            border-radius: 15px;
+            margin-top: 20px;
+            padding: 15px;
+            background: #eff6ff;
+            border-radius: 12px;
             text-align: center;
         }
 
-        .result-box h3 {
-            font-size: 16px;
-            color: #7090b0;
-            margin-bottom: 5px;
-        }
-
         .result-box .cgpa-val {
-            font-size: 36px;
+            font-size: 32px;
             font-weight: 700;
             color: var(--primary);
         }
 
-        /* Responsive Layout */
+        /* 3. SEMESTER RESOURCES HUB (AS SHOWN IN IMAGE) */
+        .resources-section {
+            background: var(--card-bg);
+            padding: 28px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .search-box {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        .search-box input {
+            padding-left: 42px;
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            border-radius: 30px;
+            height: 45px;
+            font-size: 14px;
+        }
+
+        /* Semester Tabs */
+        .semester-tabs {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #f1f5f9;
+        }
+
+        .tab-btn {
+            padding: 8px 18px;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font-weight: 500;
+            border-radius: 20px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Subject Cards Grid */
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .subject-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .semester-badge {
+            font-size: 12px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 6px;
+            display: inline-block;
+        }
+
+        .subject-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+        }
+
+        .subject-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-download {
+            flex: 1;
+            background: var(--primary);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .btn-link {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid #cbd5e1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            text-decoration: none;
+            background: white;
+        }
+
         @media (max-width: 600px) {
-            .countdown-section {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .countdown-timer {
-                width: 100%;
-                justify-content: space-between;
-            }
-            .time-box {
-                flex: 1;
-                min-width: unset;
-                padding: 8px 5px;
-            }
-            .course-row {
-                grid-template-columns: 1fr 1fr 1fr 35px;
-                gap: 8px;
-            }
+            .countdown-section { flex-direction: column; align-items: flex-start; }
+            .countdown-timer { width: 100%; justify-content: space-between; }
+            .course-row { grid-template-columns: 1fr 1fr 1fr 35px; }
+            .subject-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -252,22 +350,10 @@
             <h2 id="event-title">পরবর্তী মিড-টার্ম পরীক্ষা</h2>
         </div>
         <div class="countdown-timer">
-            <div class="time-box">
-                <span id="days">00</span>
-                <small>দিন</small>
-            </div>
-            <div class="time-box">
-                <span id="hours">00</span>
-                <small>ঘণ্টা</small>
-            </div>
-            <div class="time-box">
-                <span id="minutes">00</span>
-                <small>মিনিট</small>
-            </div>
-            <div class="time-box">
-                <span id="seconds">00</span>
-                <small>সেকেন্ড</small>
-            </div>
+            <div class="time-box"><span id="days">00</span><small>দিন</small></div>
+            <div class="time-box"><span id="hours">00</span><small>ঘণ্টা</small></div>
+            <div class="time-box"><span id="minutes">00</span><small>মিনিট</small></div>
+            <div class="time-box"><span id="seconds">00</span><small>সেকেন্ড</small></div>
         </div>
     </section>
 
@@ -275,11 +361,10 @@
     <section class="cgpa-section">
         <div class="section-header">
             <i class="fa-solid fa-calculator"></i>
-            <h2>CGPA ক্যালকুলেটর</h2>
+            <h2>সিজিপিএ ক্যালকুলেটর</h2>
         </div>
 
         <div id="course-list">
-            <!-- Initial Course Rows -->
             <div class="course-row">
                 <input type="text" placeholder="কোর্সের নাম (ঐচ্ছিক)">
                 <input type="number" class="credit" placeholder="ক্রেডিট" min="0" step="0.5" value="3">
@@ -305,19 +390,121 @@
         </div>
 
         <div class="result-box">
-            <h3>আপনার অর্জিত GPA / CGPA</h3>
+            <small style="color: var(--text-muted);">আপনার অর্জিত GPA / CGPA</small>
             <div class="cgpa-val" id="cgpa-result">0.00</div>
+        </div>
+    </section>
+
+    <!-- 3. SEMESTER RESOURCES HUB -->
+    <section class="resources-section">
+        <!-- Search Input -->
+        <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="subjectSearch" onkeyup="filterSubjects()" placeholder="Find by the name or code of any subject...">
+        </div>
+
+        <!-- Semester Filter Tabs -->
+        <div class="semester-tabs">
+            <button class="tab-btn active" onclick="filterSemester('all', this)">All semesters</button>
+            <button class="tab-btn" onclick="filterSemester('1st', this)">1st Semester</button>
+            <button class="tab-btn" onclick="filterSemester('2nd', this)">2nd Semester</button>
+            <button class="tab-btn" onclick="filterSemester('3rd', this)">3rd Semester</button>
+            <button class="tab-btn" onclick="filterSemester('4th', this)">4th Semester</button>
+            <button class="tab-btn" onclick="filterSemester('5th', this)">5th Semester</button>
+            <button class="tab-btn" onclick="filterSemester('6th', this)">6th Semester</button>
+            <button class="tab-btn" onclick="filterSemester('7th', this)">7th Semester</button>
+            <button class="tab-btn" onclick="filterSemester('8th', this)">8th Semester</button>
+        </div>
+
+        <!-- Cards Container -->
+        <div class="subject-grid" id="subjectGrid">
+            
+            <!-- Card 1 -->
+            <div class="subject-card" data-semester="1st">
+                <div>
+                    <span class="semester-badge">1st Semester</span>
+                    <h3 class="subject-title">Structured Programming Language (C)</h3>
+                    <p class="subject-desc">C Coding Practice Files, Handnotes and Assignments.</p>
+                </div>
+                <div class="card-actions">
+                    <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
+                    <a href="#" class="btn-link"><i class="fa-solid fa-link"></i></a>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="subject-card" data-semester="1st">
+                <div>
+                    <span class="semester-badge">1st Semester</span>
+                    <h3 class="subject-title">Discrete Mathematics</h3>
+                    <p class="subject-desc">Graph Theory, Truth Table and Solution Notes of Sets.</p>
+                </div>
+                <div class="card-actions">
+                    <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
+                    <a href="#" class="btn-link"><i class="fa-solid fa-link"></i></a>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="subject-card" data-semester="2nd">
+                <div>
+                    <span class="semester-badge">2nd Semester</span>
+                    <h3 class="subject-title">Data Structures</h3>
+                    <p class="subject-desc">Array, Linked List, Stack, Queue and Tree files.</p>
+                </div>
+                <div class="card-actions">
+                    <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
+                    <a href="#" class="btn-link"><i class="fa-solid fa-link"></i></a>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="subject-card" data-semester="2nd">
+                <div>
+                    <span class="semester-badge">2nd Semester</span>
+                    <h3 class="subject-title">Object Oriented Programming (C++)</h3>
+                    <p class="subject-desc">Class, Object, Inheritance, Polymorphism Notes.</p>
+                </div>
+                <div class="card-actions">
+                    <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
+                    <a href="#" class="btn-link"><i class="fa-solid fa-link"></i></a>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="subject-card" data-semester="3rd">
+                <div>
+                    <span class="semester-badge">3rd Semester</span>
+                    <h3 class="subject-title">Algorithms</h3>
+                    <p class="subject-desc">Sorting, Searching, Greedy & Dynamic Programming.</p>
+                </div>
+                <div class="card-actions">
+                    <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
+                    <a href="#" class="btn-link"><i class="fa-solid fa-link"></i></a>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="subject-card" data-semester="4th">
+                <div>
+                    <span class="semester-badge">4th Semester</span>
+                    <h3 class="subject-title">Database Management System (DBMS)</h3>
+                    <p class="subject-desc">SQL Queries, ER Diagrams, Normalization Sheets.</p>
+                </div>
+                <div class="card-actions">
+                    <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
+                    <a href="#" class="btn-link"><i class="fa-solid fa-link"></i></a>
+                </div>
+            </div>
+
         </div>
     </section>
 
 </div>
 
 <script>
-    // ==========================================
-    // 1. COUNTDOWN TIMER LOGIC
-    // ==========================================
-    // এখানে আপনার পরীক্ষার বা অ্যাসাইনমেন্টের নির্দিষ্ট তারিখটি দিন (YYYY-MM-DDTHH:MM:SS)
-    const targetDate = new Date("2026-11-27T10:00:00").getTime();
+    // 1. COUNTDOWN TIMER LOGIC (27 Feb 2027)
+    const targetDate = new Date("2027-02-27T10:00:00").getTime();
 
     function updateCountdown() {
         const now = new Date().getTime();
@@ -338,13 +525,10 @@
             document.querySelector(".countdown-timer").style.display = "none";
         }
     }
-
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // ==========================================
     // 2. CGPA CALCULATOR LOGIC
-    // ==========================================
     function addCourseRow() {
         const container = document.getElementById('course-list');
         const newRow = document.createElement('div');
@@ -371,36 +555,55 @@
 
     function removeRow(button) {
         const rows = document.querySelectorAll('.course-row');
-        if (rows.length > 1) {
-            button.parentElement.remove();
-        } else {
-            alert('কমপক্ষে একটি কোর্স থাকতে হবে!');
-        }
+        if (rows.length > 1) { button.parentElement.remove(); }
+        else { alert('কমপক্ষে একটি কোর্স থাকতে হবে!'); }
     }
 
     function calculateCGPA() {
         const credits = document.querySelectorAll('.credit');
         const grades = document.querySelectorAll('.grade');
-        
-        let totalCredits = 0;
-        let totalPoints = 0;
+        let totalCredits = 0, totalPoints = 0;
 
         for (let i = 0; i < credits.length; i++) {
             const creditVal = parseFloat(credits[i].value);
             const gradeVal = parseFloat(grades[i].value);
-
             if (!isNaN(creditVal) && creditVal > 0) {
                 totalCredits += creditVal;
                 totalPoints += (creditVal * gradeVal);
             }
         }
+        document.getElementById('cgpa-result').innerText = totalCredits > 0 ? (totalPoints / totalCredits).toFixed(2) : '0.00';
+    }
 
-        if (totalCredits > 0) {
-            const cgpa = (totalPoints / totalCredits).toFixed(2);
-            document.getElementById('cgpa-result').innerText = cgpa;
-        } else {
-            document.getElementById('cgpa-result').innerText = '0.00';
-        }
+    // 3. SEMESTER FILTER & SEARCH LOGIC
+    function filterSemester(sem, btn) {
+        const buttons = document.querySelectorAll('.tab-btn');
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const cards = document.querySelectorAll('.subject-card');
+        cards.forEach(card => {
+            if (sem === 'all' || card.getAttribute('data-semester') === sem) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    function filterSubjects() {
+        const input = document.getElementById('subjectSearch').value.toLowerCase();
+        const cards = document.querySelectorAll('.subject-card');
+        
+        cards.forEach(card => {
+            const title = card.querySelector('.subject-title').innerText.toLowerCase();
+            const desc = card.querySelector('.subject-desc').innerText.toLowerCase();
+            if (title.includes(input) || desc.includes(input)) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
     }
 </script>
 
