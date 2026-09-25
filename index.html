@@ -69,6 +69,89 @@
             padding: 0 20px;
         }
 
+        /* CGPA Section */
+        .cgpa-section {
+            background: var(--card-bg);
+            padding: 25px;
+            margin-bottom: 35px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .cgpa-section h2 {
+            margin-top: 0;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+        }
+
+        .course-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .course-row input, .course-row select {
+            padding: 12px;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 12px;
+            font-size: 14px;
+            outline: none;
+            background: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .course-name { flex: 2; min-width: 150px; }
+        .course-credit { flex: 1; min-width: 100px; }
+        .course-grade { flex: 1.5; min-width: 130px; }
+
+        .remove-btn {
+            background: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        .cgpa-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn-add {
+            background: var(--bg-color);
+            color: var(--text-color);
+            border: 1px solid var(--primary-color);
+            padding: 10px 18px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn-calc {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .result-box {
+            margin-top: 20px;
+            padding: 15px 20px;
+            background: rgba(67, 24, 255, 0.1);
+            border-left: 5px solid var(--primary-color);
+            border-radius: 12px;
+        }
+
         /* Search Box */
         .search-box {
             position: relative;
@@ -95,7 +178,7 @@
             color: #888;
         }
 
-        /* Semester Tabs (1st to 8th) */
+        /* Semester Tabs */
         .semester-tabs {
             display: flex;
             gap: 10px;
@@ -221,7 +304,44 @@
     <!-- Main Container -->
     <div class="container">
         
-        <!-- Search -->
+        <!-- CGPA Calculator Section -->
+        <section class="cgpa-section" id="cgpa-calculator">
+            <h2><i class="fa-solid fa-calculator"></i> CGPA Calculator</h2>
+            <p>আপনার কোর্সের ক্রেডিট এবং প্রাপ্ত গ্রেড সিলেক্ট করে CGPA হিসেব করুন।</p>
+            
+            <div id="course-list">
+                <div class="course-row">
+                    <input type="text" placeholder="কোর্সের নাম (যেমন: CSE 121)" class="course-name">
+                    <input type="number" placeholder="ক্রেডিট (যেমন: 3.0)" class="course-credit" min="0" step="0.5">
+                    <select class="course-grade">
+                        <option value="">গ্রেড নির্বাচন করুন</option>
+                        <option value="4.00">A+ (4.00)</option>
+                        <option value="3.75">A  (3.75)</option>
+                        <option value="3.50">A- (3.50)</option>
+                        <option value="3.25">B+ (3.25)</option>
+                        <option value="3.00">B  (3.00)</option>
+                        <option value="2.75">B- (2.75)</option>
+                        <option value="2.50">C+ (2.50)</option>
+                        <option value="2.25">C  (2.25)</option>
+                        <option value="2.00">D  (2.00)</option>
+                        <option value="0.00">F  (0.00)</option>
+                    </select>
+                    <button class="remove-btn" onclick="removeCourse(this)"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            </div>
+
+            <div class="cgpa-actions">
+                <button class="btn-add" onclick="addCourse()"><i class="fa-solid fa-plus"></i> আরও কোর্স যোগ করুন</button>
+                <button class="btn-calc" onclick="calculateCGPA()"><i class="fa-solid fa-check"></i> CGPA হিসাব করুন</button>
+            </div>
+
+            <div id="result-box" class="result-box" style="display: none;">
+                <h3 style="margin: 0 0 5px 0;">আপনার প্রাপ্ত CGPA: <span id="final-cgpa">0.00</span></h3>
+                <p id="total-credits" style="margin: 0; opacity: 0.8;">মোট ক্রেডিট: 0</p>
+            </div>
+        </section>
+
+        <!-- Search Box -->
         <div class="search-box">
             <i class="fa-solid fa-magnifying-glass"></i>
             <input type="text" id="searchInput" onkeyup="filterResources()" placeholder="যেকোনো বিষয়ের নাম বা কোড দিয়ে খুঁজুন...">
@@ -269,8 +389,6 @@
             </div>
 
             <!-- 2nd Semester Courses (Theory & Math Separated) -->
-            
-            <!-- CSE 121 -->
             <div class="card" data-semester="sem2">
                 <div>
                     <span class="badge">২য় সেমিস্টার | Credit: 3.0</span>
@@ -285,7 +403,6 @@
                 </div>
             </div>
 
-            <!-- CSE 122 -->
             <div class="card" data-semester="sem2">
                 <div>
                     <span class="badge">২য় সেমিস্টার | Credit: 1.5</span>
@@ -298,7 +415,6 @@
                 </div>
             </div>
 
-            <!-- GED 121 -->
             <div class="card" data-semester="sem2">
                 <div>
                     <span class="badge">২য় সেমিস্টার | Credit: 2.0</span>
@@ -311,7 +427,6 @@
                 </div>
             </div>
 
-            <!-- ENG 121 -->
             <div class="card" data-semester="sem2">
                 <div>
                     <span class="badge">২য় সেমিস্টার | Credit: 3.0</span>
@@ -326,7 +441,6 @@
                 </div>
             </div>
 
-            <!-- MATH 121 -->
             <div class="card" data-semester="sem2">
                 <div>
                     <span class="badge">২য় সেমিস্টার | Credit: 3.0</span>
@@ -341,7 +455,6 @@
                 </div>
             </div>
 
-            <!-- EEE 121 -->
             <div class="card" data-semester="sem2">
                 <div>
                     <span class="badge">২য় সেমিস্টার | Credit: 3.0</span>
@@ -356,7 +469,6 @@
                 </div>
             </div>
 
-            <!-- EEE 122 -->
             <div class="card" data-semester="sem2">
                 <div>
                     <span class="badge">২য় সেমিস্টার | Credit: 1.5</span>
@@ -369,7 +481,6 @@
                 </div>
             </div>
 
-            <!-- PHY 121 -->
             <div class="card" data-semester="sem2">
                 <div>
                     <span class="badge">২য় সেমিস্টার | Credit: 3.0</span>
@@ -384,7 +495,6 @@
                 </div>
             </div>
 
-            <!-- PHY 124 -->
             <div class="card" data-semester="sem2">
                 <div>
                     <span class="badge">২য় সেমিস্টার | Credit: 1.0</span>
@@ -397,7 +507,7 @@
                 </div>
             </div>
 
-            <!-- 3rd Semester -->
+            <!-- 3rd to 8th Semesters -->
             <div class="card" data-semester="sem3">
                 <div>
                     <span class="badge">৩য় সেমিস্টার</span>
@@ -410,7 +520,6 @@
                 </div>
             </div>
 
-            <!-- 4th Semester -->
             <div class="card" data-semester="sem4">
                 <div>
                     <span class="badge">৪র্থ সেমিস্টার</span>
@@ -423,7 +532,6 @@
                 </div>
             </div>
 
-            <!-- 5th Semester -->
             <div class="card" data-semester="sem5">
                 <div>
                     <span class="badge">৫ম সেমিস্টার</span>
@@ -436,7 +544,6 @@
                 </div>
             </div>
 
-            <!-- 6th Semester -->
             <div class="card" data-semester="sem6">
                 <div>
                     <span class="badge">৬ষ্ঠ সেমিস্টার</span>
@@ -449,7 +556,6 @@
                 </div>
             </div>
 
-            <!-- 7th Semester -->
             <div class="card" data-semester="sem7">
                 <div>
                     <span class="badge">৭ম সেমিস্টার</span>
@@ -462,7 +568,6 @@
                 </div>
             </div>
 
-            <!-- 8th Semester -->
             <div class="card" data-semester="sem8">
                 <div>
                     <span class="badge">৮ম সেমিস্টার</span>
@@ -515,6 +620,72 @@
                     card.style.display = "none";
                 }
             });
+        }
+
+        /* CGPA Logic */
+        function addCourse() {
+            const courseList = document.getElementById('course-list');
+            const newRow = document.createElement('div');
+            newRow.className = 'course-row';
+            newRow.innerHTML = `
+                <input type="text" placeholder="কোর্সের নাম (যেমন: CSE 121)" class="course-name">
+                <input type="number" placeholder="ক্রেডিট (যেমন: 3.0)" class="course-credit" min="0" step="0.5">
+                <select class="course-grade">
+                    <option value="">গ্রেড নির্বাচন করুন</option>
+                    <option value="4.00">A+ (4.00)</option>
+                    <option value="3.75">A  (3.75)</option>
+                    <option value="3.50">A- (3.50)</option>
+                    <option value="3.25">B+ (3.25)</option>
+                    <option value="3.00">B  (3.00)</option>
+                    <option value="2.75">B- (2.75)</option>
+                    <option value="2.50">C+ (2.50)</option>
+                    <option value="2.25">C  (2.25)</option>
+                    <option value="2.00">D  (2.00)</option>
+                    <option value="0.00">F  (0.00)</option>
+                </select>
+                <button class="remove-btn" onclick="removeCourse(this)"><i class="fa-solid fa-trash"></i></button>
+            `;
+            courseList.appendChild(newRow);
+        }
+
+        function removeCourse(btn) {
+            const rows = document.querySelectorAll('.course-row');
+            if (rows.length > 1) {
+                btn.parentElement.remove();
+            } else {
+                alert('কমপক্ষে একটি কোর্স থাকতে হবে!');
+            }
+        }
+
+        function calculateCGPA() {
+            const credits = document.querySelectorAll('.course-credit');
+            const grades = document.querySelectorAll('.course-grade');
+
+            let totalPoints = 0;
+            let totalCredits = 0;
+
+            for (let i = 0; i < credits.length; i++) {
+                const creditVal = parseFloat(credits[i].value);
+                const gradeVal = parseFloat(grades[i].value);
+
+                if (!isNaN(creditVal) && !isNaN(gradeVal)) {
+                    totalPoints += creditVal * gradeVal;
+                    totalCredits += creditVal;
+                }
+            }
+
+            const resultBox = document.getElementById('result-box');
+            const finalCgpaSpan = document.getElementById('final-cgpa');
+            const totalCreditsP = document.getElementById('total-credits');
+
+            if (totalCredits > 0) {
+                const cgpa = (totalPoints / totalCredits).toFixed(2);
+                finalCgpaSpan.innerText = cgpa;
+                totalCreditsP.innerText = `মোট ক্রেডিট: ${totalCredits}`;
+                resultBox.style.display = 'block';
+            } else {
+                alert('অনুগ্রহ করে সঠিক ক্রেডিট এবং গ্রেড ইনপুট দিন।');
+            }
         }
     </script>
 </body>
