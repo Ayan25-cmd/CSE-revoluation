@@ -3,690 +3,406 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSE All Semesters Resource Hub</title>
-    <!-- FontAwesome Icons -->
+    <title>Student Portal & Academic Tools</title>
+    <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
+            --primary: #4318ff;
+            --primary-dark: #2b3674;
             --bg-color: #f4f7fe;
-            --text-color: #2b3674;
             --card-bg: #ffffff;
-            --primary-color: #4318ff;
+            --text-color: #2b3674;
+            --text-muted: #a3edda;
+            --border-radius: 20px;
             --shadow: 0px 18px 40px rgba(112, 144, 176, 0.12);
         }
 
-        [data-theme="dark"] {
-            --bg-color: #0b1437;
-            --text-color: #ffffff;
-            --card-bg: #111c44;
-            --primary-color: #7551ff;
-            --shadow: 0px 18px 40px rgba(0, 0, 0, 0.4);
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Hind Siliguri', 'Poppins', sans-serif;
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            transition: all 0.3s ease;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
         }
 
-        /* Header */
-        header {
-            background: var(--card-bg);
-            padding: 20px 40px;
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* 1. Countdown Section Styles */
+        .countdown-section {
+            background: linear-gradient(135deg, #2b3674 0%, #4318ff 100%);
+            color: #ffffff;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            margin-bottom: 25px;
             box-shadow: var(--shadow);
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
+            gap: 20px;
         }
 
-        .logo h1 {
-            margin: 0;
-            font-size: 22px;
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .theme-btn {
-            background: var(--bg-color);
-            border: none;
-            color: var(--text-color);
-            padding: 10px 18px;
+        .badge-live {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 14px;
             border-radius: 20px;
-            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .countdown-header h2 {
+            margin-top: 8px;
+            font-size: 22px;
             font-weight: 600;
         }
 
-        /* Container */
-        .container {
-            max-width: 1100px;
-            margin: 30px auto;
-            padding: 0 20px;
+        .countdown-timer {
+            display: flex;
+            gap: 12px;
         }
 
-        /* CGPA Section */
+        .time-box {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 10px 16px;
+            border-radius: 12px;
+            text-align: center;
+            min-width: 60px;
+        }
+
+        .time-box span {
+            display: block;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .time-box small {
+            font-size: 12px;
+            opacity: 0.9;
+            margin-top: 4px;
+            display: block;
+        }
+
+        /* 2. CGPA Calculator Section Styles */
         .cgpa-section {
             background: var(--card-bg);
-            padding: 25px;
-            margin-bottom: 35px;
-            border-radius: 20px;
+            padding: 30px;
+            border-radius: var(--border-radius);
             box-shadow: var(--shadow);
         }
 
-        .cgpa-section h2 {
-            margin-top: 0;
-            color: var(--primary-color);
+        .section-header {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 20px;
+            gap: 12px;
+            margin-bottom: 25px;
+            color: var(--primary-dark);
+        }
+
+        .section-header i {
+            font-size: 24px;
+            color: var(--primary);
         }
 
         .course-row {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 12px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 40px;
+            gap: 12px;
+            margin-bottom: 15px;
             align-items: center;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e0e5f2;
+            border-radius: 12px;
+            outline: none;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 24, 255, 0.1);
+        }
+
+        .btn-remove {
+            background: #ff4d4f15;
+            color: #ff4d4f;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.2s;
+        }
+
+        .btn-remove:hover {
+            background: #ff4d4f;
+            color: white;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
             flex-wrap: wrap;
         }
 
-        .course-row input, .course-row select {
-            padding: 12px;
-            border: 1px solid rgba(0,0,0,0.1);
+        .btn {
+            padding: 12px 24px;
             border-radius: 12px;
-            font-size: 14px;
-            outline: none;
-            background: var(--bg-color);
-            color: var(--text-color);
-        }
-
-        .course-name { flex: 2; min-width: 150px; }
-        .course-credit { flex: 1; min-width: 100px; }
-        .course-grade { flex: 1.5; min-width: 130px; }
-
-        .remove-btn {
-            background: #ff4d4d;
-            color: white;
             border: none;
-            padding: 12px 16px;
-            border-radius: 12px;
-            cursor: pointer;
-        }
-
-        .cgpa-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .btn-add {
-            background: var(--bg-color);
-            color: var(--text-color);
-            border: 1px solid var(--primary-color);
-            padding: 10px 18px;
-            border-radius: 12px;
-            cursor: pointer;
             font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
         }
 
-        .btn-calc {
-            background: var(--primary-color);
+        .btn-primary {
+            background: var(--primary);
             color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-weight: bold;
+        }
+
+        .btn-primary:hover {
+            background: #3311db;
+        }
+
+        .btn-secondary {
+            background: #f4f7fe;
+            color: var(--primary-dark);
+        }
+
+        .btn-secondary:hover {
+            background: #e2e8f0;
         }
 
         .result-box {
-            margin-top: 20px;
-            padding: 15px 20px;
-            background: rgba(67, 24, 255, 0.1);
-            border-left: 5px solid var(--primary-color);
-            border-radius: 12px;
-        }
-
-        /* Search Box */
-        .search-box {
-            position: relative;
-            margin-bottom: 25px;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 14px 20px 14px 45px;
-            border-radius: 30px;
-            border: 1px solid rgba(0,0,0,0.1);
-            background: var(--card-bg);
-            color: var(--text-color);
-            box-sizing: border-box;
-            outline: none;
-            font-size: 15px;
-        }
-
-        .search-box i {
-            position: absolute;
-            left: 18px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #888;
-        }
-
-        /* Semester Tabs */
-        .semester-tabs {
-            display: flex;
-            gap: 10px;
-            overflow-x: auto;
-            padding-bottom: 10px;
-            margin-bottom: 30px;
-        }
-
-        .semester-tabs::-webkit-scrollbar {
-            height: 6px;
-        }
-
-        .semester-tabs::-webkit-scrollbar-thumb {
-            background: var(--primary-color);
-            border-radius: 10px;
-        }
-
-        .tab-btn {
-            padding: 10px 20px;
-            border-radius: 20px;
-            border: none;
-            background: var(--card-bg);
-            color: var(--text-color);
-            cursor: pointer;
-            font-weight: 600;
-            white-space: nowrap;
-            transition: 0.3s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        .tab-btn.active {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        /* Grid Cards */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 25px;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .badge {
-            background: rgba(67, 24, 255, 0.1);
-            color: var(--primary-color);
-            padding: 5px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: bold;
-            width: fit-content;
-            margin-bottom: 12px;
-        }
-
-        .card h3 {
-            margin: 0 0 10px 0;
-            font-size: 18px;
-        }
-
-        .card p {
-            font-size: 14px;
-            opacity: 0.8;
-            margin-bottom: 20px;
-        }
-
-        .card-actions {
-            display: flex;
-            gap: 10px;
-        }
-
-        .btn {
-            flex: 1;
-            padding: 10px;
-            border-radius: 12px;
-            border: none;
-            background: var(--primary-color);
-            color: white;
-            text-decoration: none;
+            margin-top: 25px;
+            padding: 20px;
+            background: #f4f7fe;
+            border-radius: 15px;
             text-align: center;
-            font-weight: bold;
-            font-size: 13px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
         }
 
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--primary-color);
-            color: var(--primary-color);
-            width: 45px;
-            flex: none;
-            cursor: pointer;
-            border-radius: 12px;
+        .result-box h3 {
+            font-size: 16px;
+            color: #7090b0;
+            margin-bottom: 5px;
+        }
+
+        .result-box .cgpa-val {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Responsive Layout */
+        @media (max-width: 600px) {
+            .countdown-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .countdown-timer {
+                width: 100%;
+                justify-content: space-between;
+            }
+            .time-box {
+                flex: 1;
+                min-width: unset;
+                padding: 8px 5px;
+            }
+            .course-row {
+                grid-template-columns: 1fr 1fr 1fr 35px;
+                gap: 8px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="logo">
-            <h1><i class="fa-solid fa-graduation-cap"></i> CSE All Semesters Resource Hub</h1>
+<div class="container">
+
+    <!-- 1. LIVE COUNTDOWN SECTION -->
+    <section class="countdown-section">
+        <div class="countdown-header">
+            <span class="badge-live"><i class="fa-solid fa-bell fa-bounce"></i> Upcoming Event</span>
+            <h2 id="event-title">পরবর্তী মিড-টার্ম পরীক্ষা</h2>
         </div>
-        <button class="theme-btn" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i> Dark Mode</button>
-    </header>
-
-    <!-- Main Container -->
-    <div class="container">
-        
-        <!-- CGPA Calculator Section -->
-        <section class="cgpa-section" id="cgpa-calculator">
-            <h2><i class="fa-solid fa-calculator"></i> CGPA Calculator</h2>
-            <p>আপনার কোর্সের ক্রেডিট এবং প্রাপ্ত গ্রেড সিলেক্ট করে CGPA হিসেব করুন।</p>
-            
-            <div id="course-list">
-                <div class="course-row">
-                    <input type="text" placeholder="কোর্সের নাম (যেমন: CSE 121)" class="course-name">
-                    <input type="number" placeholder="ক্রেডিট (যেমন: 3.0)" class="course-credit" min="0" step="0.5">
-                    <select class="course-grade">
-                        <option value="">গ্রেড নির্বাচন করুন</option>
-                        <option value="4.00">A+ (4.00)</option>
-                        <option value="3.75">A  (3.75)</option>
-                        <option value="3.50">A- (3.50)</option>
-                        <option value="3.25">B+ (3.25)</option>
-                        <option value="3.00">B  (3.00)</option>
-                        <option value="2.75">B- (2.75)</option>
-                        <option value="2.50">C+ (2.50)</option>
-                        <option value="2.25">C  (2.25)</option>
-                        <option value="2.00">D  (2.00)</option>
-                        <option value="0.00">F  (0.00)</option>
-                    </select>
-                    <button class="remove-btn" onclick="removeCourse(this)"><i class="fa-solid fa-trash"></i></button>
-                </div>
+        <div class="countdown-timer">
+            <div class="time-box">
+                <span id="days">00</span>
+                <small>দিন</small>
             </div>
-
-            <div class="cgpa-actions">
-                <button class="btn-add" onclick="addCourse()"><i class="fa-solid fa-plus"></i> আরও কোর্স যোগ করুন</button>
-                <button class="btn-calc" onclick="calculateCGPA()"><i class="fa-solid fa-check"></i> CGPA হিসাব করুন</button>
+            <div class="time-box">
+                <span id="hours">00</span>
+                <small>ঘণ্টা</small>
             </div>
-
-            <div id="result-box" class="result-box" style="display: none;">
-                <h3 style="margin: 0 0 5px 0;">আপনার প্রাপ্ত CGPA: <span id="final-cgpa">0.00</span></h3>
-                <p id="total-credits" style="margin: 0; opacity: 0.8;">মোট ক্রেডিট: 0</p>
+            <div class="time-box">
+                <span id="minutes">00</span>
+                <small>মিনিট</small>
             </div>
-        </section>
+            <div class="time-box">
+                <span id="seconds">00</span>
+                <small>সেকেন্ড</small>
+            </div>
+        </div>
+    </section>
 
-        <!-- Search Box -->
-        <div class="search-box">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" id="searchInput" onkeyup="filterResources()" placeholder="যেকোনো বিষয়ের নাম বা কোড দিয়ে খুঁজুন...">
+    <!-- 2. CGPA CALCULATOR SECTION -->
+    <section class="cgpa-section">
+        <div class="section-header">
+            <i class="fa-solid fa-calculator"></i>
+            <h2>CGPA ক্যালকুলেটর</h2>
         </div>
 
-        <!-- 1st to 8th Semester Filter Tabs -->
-        <div class="semester-tabs">
-            <button class="tab-btn active" onclick="filterSemester('all', this)">সব সেমিস্টার</button>
-            <button class="tab-btn" onclick="filterSemester('sem1', this)">১ম সেমিস্টার</button>
-            <button class="tab-btn" onclick="filterSemester('sem2', this)">২য় সেমিস্টার</button>
-            <button class="tab-btn" onclick="filterSemester('sem3', this)">৩য় সেমিস্টার</button>
-            <button class="tab-btn" onclick="filterSemester('sem4', this)">৪র্থ সেমিস্টার</button>
-            <button class="tab-btn" onclick="filterSemester('sem5', this)">৫ম সেমিস্টার</button>
-            <button class="tab-btn" onclick="filterSemester('sem6', this)">৬ষ্ঠ সেমিস্টার</button>
-            <button class="tab-btn" onclick="filterSemester('sem7', this)">৭ম সেমিস্টার</button>
-            <button class="tab-btn" onclick="filterSemester('sem8', this)">৮ম সেমিস্টার</button>
-        </div>
-
-        <!-- Cards Grid -->
-        <div class="grid" id="resourceGrid">
-            
-            <!-- 1st Semester -->
-            <div class="card" data-semester="sem1">
-                <div>
-                    <span class="badge">১ম সেমিস্টার</span>
-                    <h3>Structured Programming Language (C)</h3>
-                    <p>C কোডিং প্র্যাকটিস ফাইল, হ্যান্ডনোট ও অ্যাসাইনমেন্ট।</p>
-                </div>
-                <div class="card-actions">
-                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-download"></i> ডাউনলোড</a>
-                    <button class="btn-outline" onclick="copyLink('#')"><i class="fa-solid fa-link"></i></button>
-                </div>
-            </div>
-
-            <div class="card" data-semester="sem1">
-                <div>
-                    <span class="badge">১ম সেমিস্টার</span>
-                    <h3>Discrete Mathematics</h3>
-                    <p>গ্রাফ থিওরি, ট্রুথ টেবিল ও সেটের সলিউশন নোটস।</p>
-                </div>
-                <div class="card-actions">
-                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-download"></i> ডাউনলোড</a>
-                    <button class="btn-outline" onclick="copyLink('#')"><i class="fa-solid fa-link"></i></button>
-                </div>
-            </div>
-
-            <!-- 2nd Semester Courses (Theory & Math Separated) -->
-            <div class="card" data-semester="sem2">
-                <div>
-                    <span class="badge">২য় সেমিস্টার | Credit: 3.0</span>
-                    <h3>CSE 121: Structured Programming Language</h3>
-                    <p>C প্রোগামিং কনসেপ্ট, থিওরি লেকচার এবং কোডিং/প্রবলেম সলভিং পার্ট।</p>
-                </div>
-                <div class="card-actions" style="flex-direction: column; gap: 8px;">
-                    <div style="display: flex; gap: 8px; width: 100%;">
-                        <a href="#" target="_blank" class="btn" style="background: #2b3674;"><i class="fa-solid fa-book"></i> Theory Part</a>
-                        <a href="#" target="_blank" class="btn"><i class="fa-solid fa-code"></i> Code & Practice</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card" data-semester="sem2">
-                <div>
-                    <span class="badge">২য় সেমিস্টার | Credit: 1.5</span>
-                    <h3>CSE 122: Structured Programming Language Sessional</h3>
-                    <p>C প্রোগামিং ল্যাব রিপোর্ট, ল্যাব ম্যানুয়াল ও অ্যাসাইনমেন্ট সলিউশন।</p>
-                </div>
-                <div class="card-actions">
-                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-flask"></i> Lab Resources</a>
-                    <button class="btn-outline" onclick="copyLink('#')"><i class="fa-solid fa-link"></i></button>
-                </div>
-            </div>
-
-            <div class="card" data-semester="sem2">
-                <div>
-                    <span class="badge">২য় সেমিস্টার | Credit: 2.0</span>
-                    <h3>GED 121: History of the Emergence of Bangladesh</h3>
-                    <p>বাংলাদেশের ইতিহাস, গুরুত্বপূর্ণ লেকচার শিট, হ্যান্ডনোট ও থিওরি প্রশ্ন।</p>
-                </div>
-                <div class="card-actions">
-                    <a href="#" target="_blank" class="btn" style="background: #2b3674;"><i class="fa-solid fa-book"></i> Theory Notes</a>
-                    <button class="btn-outline" onclick="copyLink('#')"><i class="fa-solid fa-link"></i></button>
-                </div>
-            </div>
-
-            <div class="card" data-semester="sem2">
-                <div>
-                    <span class="badge">২য় সেমিস্টার | Credit: 3.0</span>
-                    <h3>ENG 121: English Writing and Listening</h3>
-                    <p>গ্রামার ও রাইটিং রুলস (Theory) এবং লিসেনিং ও অনুশীলনী (Practice)।</p>
-                </div>
-                <div class="card-actions" style="flex-direction: column; gap: 8px;">
-                    <div style="display: flex; gap: 8px; width: 100%;">
-                        <a href="#" target="_blank" class="btn" style="background: #2b3674;"><i class="fa-solid fa-book"></i> Theory & Rules</a>
-                        <a href="#" target="_blank" class="btn"><i class="fa-solid fa-pen-nib"></i> Writing Practice</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card" data-semester="sem2">
-                <div>
-                    <span class="badge">২য় সেমিস্টার | Credit: 3.0</span>
-                    <h3>MATH 121: MATH II</h3>
-                    <p>Vector Analysis, Linear Algebra, Coordinate Geometry & Fourier Analysis.</p>
-                </div>
-                <div class="card-actions" style="flex-direction: column; gap: 8px;">
-                    <div style="display: flex; gap: 8px; width: 100%;">
-                        <a href="#" target="_blank" class="btn" style="background: #2b3674;"><i class="fa-solid fa-book"></i> Theory & Formulas</a>
-                        <a href="#" target="_blank" class="btn"><i class="fa-solid fa-calculator"></i> Math Solutions</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card" data-semester="sem2">
-                <div>
-                    <span class="badge">২য় সেমিস্টার | Credit: 3.0</span>
-                    <h3>EEE 121: Electronic Devices and Circuits</h3>
-                    <p>সেমিকন্ডাক্টর ও সার্কিট কনসেপ্ট (Theory) এবং ম্যাথ সলিউশন/ডায়াগোরাম।</p>
-                </div>
-                <div class="card-actions" style="flex-direction: column; gap: 8px;">
-                    <div style="display: flex; gap: 8px; width: 100%;">
-                        <a href="#" target="_blank" class="btn" style="background: #2b3674;"><i class="fa-solid fa-book"></i> Theory Notes</a>
-                        <a href="#" target="_blank" class="btn"><i class="fa-solid fa-bolt"></i> Math & Circuits</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card" data-semester="sem2">
-                <div>
-                    <span class="badge">২য় সেমিস্টার | Credit: 1.5</span>
-                    <h3>EEE 122: Electronic Devices and Circuits Sessional</h3>
-                    <p>ইলেকট্রনিক্স ল্যাব ম্যানুয়াল, সার্কিট সিমুলেশন ও ল্যাব রিপোর্ট।</p>
-                </div>
-                <div class="card-actions">
-                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-microchip"></i> Lab Sheets</a>
-                    <button class="btn-outline" onclick="copyLink('#')"><i class="fa-solid fa-link"></i></button>
-                </div>
-            </div>
-
-            <div class="card" data-semester="sem2">
-                <div>
-                    <span class="badge">২য় সেমিস্টার | Credit: 3.0</span>
-                    <h3>PHY 121: Physics I</h3>
-                    <p>ফিজিক্স থিওরি কনসেপ্ট ও লেকচার এবং গাণিতিক সমস্যার সমাধান (Math)।</p>
-                </div>
-                <div class="card-actions" style="flex-direction: column; gap: 8px;">
-                    <div style="display: flex; gap: 8px; width: 100%;">
-                        <a href="#" target="_blank" class="btn" style="background: #2b3674;"><i class="fa-solid fa-book"></i> Theory Part</a>
-                        <a href="#" target="_blank" class="btn"><i class="fa-solid fa-square-root-variable"></i> Math Problems</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card" data-semester="sem2">
-                <div>
-                    <span class="badge">২য় সেমিস্টার | Credit: 1.0</span>
-                    <h3>PHY 124: Basic Physics Sessional</h3>
-                    <p>ফিজিক্স ল্যাব প্র্যাকটিক্যাল নোটস, ডাটা টেবিল ও রিপোর্ট সলিউশন।</p>
-                </div>
-                <div class="card-actions">
-                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-atom"></i> Lab Data & Copy</a>
-                    <button class="btn-outline" onclick="copyLink('#')"><i class="fa-solid fa-link"></i></button>
-                </div>
-            </div>
-
-            <!-- 3rd to 8th Semesters -->
-            <div class="card" data-semester="sem3">
-                <div>
-                    <span class="badge">৩য় সেমিস্টার</span>
-                    <h3>Algorithms</h3>
-                    <p>Sorting, Searching, Greedy & Dynamic Programming.</p>
-                </div>
-                <div class="card-actions">
-                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-download"></i> ডাউনলোড</a>
-                    <button class="btn-outline" onclick="copyLink('#')"><i class="fa-solid fa-link"></i></button>
-                </div>
-            </div>
-
-            <div class="card" data-semester="sem4">
-                <div>
-                    <span class="badge">৪র্থ সেমিস্টার</span>
-                    <h3>Database Management System (DBMS)</h3>
-                    <p>SQL Queries, ER Diagram, Normalization শিট।</p>
-                </div>
-                <div class="card-actions">
-                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-download"></i> ডাউনলোড</a>
-                    <button class="btn-outline" onclick="copyLink('#')"><i class="fa-solid fa-link"></i></button>
-                </div>
-            </div>
-
-            <div class="card" data-semester="sem5">
-                <div>
-                    <span class="badge">৫ম সেমিস্টার</span>
-                    <h3>Operating Systems</h3>
-                    <p>Process Management, Memory Management & Threads.</p>
-                </div>
-                <div class="card-actions">
-                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-download"></i> ডাউনলোড</a>
-                    <button class="btn-outline" onclick="copyLink('#')"><i class="fa-solid fa-link"></i></button>
-                </div>
-            </div>
-
-            <div class="card" data-semester="sem6">
-                <div>
-                    <span class="badge">৬ষ্ঠ সেমিস্টার</span>
-                    <h3>Computer Networks</h3>
-                    <p>OSI Model, TCP/IP, IP Addressing & Subnetting.</p>
-                </div>
-                <div class="card-actions">
-                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-download"></i> ডাউনলোড</a>
-                    <button class="btn-outline" onclick="copyLink('#')"><i class="fa-solid fa-link"></i></button>
-                </div>
-            </div>
-
-            <div class="card" data-semester="sem7">
-                <div>
-                    <span class="badge">৭ম সেমিস্টার</span>
-                    <h3>Artificial Intelligence & ML</h3>
-                    <p>Search Algorithms, Neural Networks, Python Code.</p>
-                </div>
-                <div class="card-actions">
-                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-download"></i> ডাউনলোড</a>
-                    <button class="btn-outline" onclick="copyLink('#')"><i class="fa-solid fa-link"></i></button>
-                </div>
-            </div>
-
-            <div class="card" data-semester="sem8">
-                <div>
-                    <span class="badge">৮ম সেমিস্টার</span>
-                    <h3>Thesis / Final Project & Cyber Security</h3>
-                    <p>প্রজেক্ট গাইডলাইন, রিসার্চ পেপার রিসোর্স ও নোটস।</p>
-                </div>
-                <div class="card-actions">
-                    <a href="#" target="_blank" class="btn"><i class="fa-solid fa-download"></i> ডাউনলোড</a>
-                    <button class="btn-outline" onclick="copyLink('#')"><i class="fa-solid fa-link"></i></button>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- JS Logic -->
-    <script>
-        function toggleTheme() {
-            document.body.toggleAttribute('data-theme');
-        }
-
-        function copyLink(link) {
-            navigator.clipboard.writeText(link);
-            alert("লিংক কপি করা হয়েছে!");
-        }
-
-        function filterSemester(sem, btn) {
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            let cards = document.querySelectorAll('.card');
-            cards.forEach(card => {
-                if (sem === 'all' || card.getAttribute('data-semester') === sem) {
-                    card.style.display = "flex";
-                } else {
-                    card.style.display = "none";
-                }
-            });
-        }
-
-        function filterResources() {
-            let input = document.getElementById('searchInput').value.toLowerCase();
-            let cards = document.querySelectorAll('.card');
-
-            cards.forEach(card => {
-                let text = card.innerText.toLowerCase();
-                if (text.includes(input)) {
-                    card.style.display = "flex";
-                } else {
-                    card.style.display = "none";
-                }
-            });
-        }
-
-        /* CGPA Logic */
-        function addCourse() {
-            const courseList = document.getElementById('course-list');
-            const newRow = document.createElement('div');
-            newRow.className = 'course-row';
-            newRow.innerHTML = `
-                <input type="text" placeholder="কোর্সের নাম (যেমন: CSE 121)" class="course-name">
-                <input type="number" placeholder="ক্রেডিট (যেমন: 3.0)" class="course-credit" min="0" step="0.5">
-                <select class="course-grade">
-                    <option value="">গ্রেড নির্বাচন করুন</option>
+        <div id="course-list">
+            <!-- Initial Course Rows -->
+            <div class="course-row">
+                <input type="text" placeholder="কোর্সের নাম (ঐচ্ছিক)">
+                <input type="number" class="credit" placeholder="ক্রেডিট" min="0" step="0.5" value="3">
+                <select class="grade">
                     <option value="4.00">A+ (4.00)</option>
-                    <option value="3.75">A  (3.75)</option>
+                    <option value="3.75">A (3.75)</option>
                     <option value="3.50">A- (3.50)</option>
                     <option value="3.25">B+ (3.25)</option>
-                    <option value="3.00">B  (3.00)</option>
+                    <option value="3.00">B (3.00)</option>
                     <option value="2.75">B- (2.75)</option>
                     <option value="2.50">C+ (2.50)</option>
-                    <option value="2.25">C  (2.25)</option>
-                    <option value="2.00">D  (2.00)</option>
-                    <option value="0.00">F  (0.00)</option>
+                    <option value="2.25">C (2.25)</option>
+                    <option value="2.00">D (2.00)</option>
+                    <option value="0.00">F (0.00)</option>
                 </select>
-                <button class="remove-btn" onclick="removeCourse(this)"><i class="fa-solid fa-trash"></i></button>
-            `;
-            courseList.appendChild(newRow);
-        }
+                <button class="btn-remove" onclick="removeRow(this)"><i class="fa-solid fa-trash"></i></button>
+            </div>
+        </div>
 
-        function removeCourse(btn) {
-            const rows = document.querySelectorAll('.course-row');
-            if (rows.length > 1) {
-                btn.parentElement.remove();
-            } else {
-                alert('কমপক্ষে একটি কোর্স থাকতে হবে!');
+        <div class="controls">
+            <button class="btn btn-secondary" onclick="addCourseRow()"><i class="fa-solid fa-plus"></i> কোর্স যোগ করুন</button>
+            <button class="btn btn-primary" onclick="calculateCGPA()"><i class="fa-solid fa-check"></i> সিজিপিএ হিসাব করুন</button>
+        </div>
+
+        <div class="result-box">
+            <h3>আপনার অর্জিত GPA / CGPA</h3>
+            <div class="cgpa-val" id="cgpa-result">0.00</div>
+        </div>
+    </section>
+
+</div>
+
+<script>
+    // ==========================================
+    // 1. COUNTDOWN TIMER LOGIC
+    // ==========================================
+    // এখানে আপনার পরীক্ষার বা অ্যাসাইনমেন্টের নির্দিষ্ট তারিখটি দিন (YYYY-MM-DDTHH:MM:SS)
+    const targetDate = new Date("2026-10-15T10:00:00").getTime();
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const difference = targetDate - now;
+
+        if (difference > 0) {
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days < 10 ? '0' + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? '0' + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? '0' + seconds : seconds;
+        } else {
+            document.getElementById("event-title").innerText = "ইভেন্টটি সম্পন্ন হয়েছে!";
+            document.querySelector(".countdown-timer").style.display = "none";
+        }
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // ==========================================
+    // 2. CGPA CALCULATOR LOGIC
+    // ==========================================
+    function addCourseRow() {
+        const container = document.getElementById('course-list');
+        const newRow = document.createElement('div');
+        newRow.className = 'course-row';
+        newRow.innerHTML = `
+            <input type="text" placeholder="কোর্সের নাম (ঐচ্ছিক)">
+            <input type="number" class="credit" placeholder="ক্রেডিট" min="0" step="0.5" value="3">
+            <select class="grade">
+                <option value="4.00">A+ (4.00)</option>
+                <option value="3.75">A (3.75)</option>
+                <option value="3.50">A- (3.50)</option>
+                <option value="3.25">B+ (3.25)</option>
+                <option value="3.00">B (3.00)</option>
+                <option value="2.75">B- (2.75)</option>
+                <option value="2.50">C+ (2.50)</option>
+                <option value="2.25">C (2.25)</option>
+                <option value="2.00">D (2.00)</option>
+                <option value="0.00">F (0.00)</option>
+            </select>
+            <button class="btn-remove" onclick="removeRow(this)"><i class="fa-solid fa-trash"></i></button>
+        `;
+        container.appendChild(newRow);
+    }
+
+    function removeRow(button) {
+        const rows = document.querySelectorAll('.course-row');
+        if (rows.length > 1) {
+            button.parentElement.remove();
+        } else {
+            alert('কমপক্ষে একটি কোর্স থাকতে হবে!');
+        }
+    }
+
+    function calculateCGPA() {
+        const credits = document.querySelectorAll('.credit');
+        const grades = document.querySelectorAll('.grade');
+        
+        let totalCredits = 0;
+        let totalPoints = 0;
+
+        for (let i = 0; i < credits.length; i++) {
+            const creditVal = parseFloat(credits[i].value);
+            const gradeVal = parseFloat(grades[i].value);
+
+            if (!isNaN(creditVal) && creditVal > 0) {
+                totalCredits += creditVal;
+                totalPoints += (creditVal * gradeVal);
             }
         }
 
-        function calculateCGPA() {
-            const credits = document.querySelectorAll('.course-credit');
-            const grades = document.querySelectorAll('.course-grade');
-
-            let totalPoints = 0;
-            let totalCredits = 0;
-
-            for (let i = 0; i < credits.length; i++) {
-                const creditVal = parseFloat(credits[i].value);
-                const gradeVal = parseFloat(grades[i].value);
-
-                if (!isNaN(creditVal) && !isNaN(gradeVal)) {
-                    totalPoints += creditVal * gradeVal;
-                    totalCredits += creditVal;
-                }
-            }
-
-            const resultBox = document.getElementById('result-box');
-            const finalCgpaSpan = document.getElementById('final-cgpa');
-            const totalCreditsP = document.getElementById('total-credits');
-
-            if (totalCredits > 0) {
-                const cgpa = (totalPoints / totalCredits).toFixed(2);
-                finalCgpaSpan.innerText = cgpa;
-                totalCreditsP.innerText = `মোট ক্রেডিট: ${totalCredits}`;
-                resultBox.style.display = 'block';
-            } else {
-                alert('অনুগ্রহ করে সঠিক ক্রেডিট এবং গ্রেড ইনপুট দিন।');
-            }
+        if (totalCredits > 0) {
+            const cgpa = (totalPoints / totalCredits).toFixed(2);
+            document.getElementById('cgpa-result').innerText = cgpa;
+        } else {
+            document.getElementById('cgpa-result').innerText = '0.00';
         }
-    </script>
+    }
+</script>
+
 </body>
 </html>
