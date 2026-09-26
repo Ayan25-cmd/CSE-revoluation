@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Semester Resources Hub & Academic Tools</title>
+    <title>Semester Resources & Coding Hub</title>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -16,11 +16,12 @@
             --bg-color: #0f172a;        /* গাঢ় কালো/ডার্ক ব্যাকগ্রাউন্ড */
             --card-bg: #1e293b;        /* ডার্ক কার্ড ব্যাকগ্রাউন্ড */
             --card-inner-bg: #0f172a;  /* সাবজেক্ট কার্ডের ভেতরের ব্যাকগ্রাউন্ড */
-            --text-dark: #f8fafc;       /* উজ্জ্বল লেখা (ডার্ক মোডের জন্য) */
+            --text-dark: #f8fafc;       /* উজ্জ্বল লেখা */
             --text-muted: #94a3b8;      /* হালকা ছাই রঙের লেখা */
             --border-color: #334155;    /* সূক্ষ্ম বর্ডার */
             --border-radius: 16px;
             --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+            --editor-bg: #090d16;
         }
 
         * {
@@ -37,7 +38,7 @@
         }
 
         /* ----------------------------------
-           0. SPLASH SCREEN ANIMATION (OPTION A)
+           0. SPLASH SCREEN ANIMATION
         ---------------------------------- */
         #splash-screen {
             position: fixed;
@@ -107,16 +108,18 @@
         }
 
         /* ----------------------------------
-           NAVBAR & HEADER
+           NAVBAR & NAVIGATION TABS
         ---------------------------------- */
         .navbar {
             background: var(--card-bg);
             border-bottom: 1px solid var(--border-color);
-            padding: 15px 30px;
+            padding: 12px 25px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .nav-logo {
@@ -132,6 +135,36 @@
         .nav-logo i {
             color: var(--primary);
             font-size: 22px;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 8px;
+            background: #0f172a;
+            padding: 5px;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+        }
+
+        .nav-tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-tab-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
         }
 
         .nav-auth-btn {
@@ -154,13 +187,27 @@
         }
 
         /* ----------------------------------
-           MAIN CONTAINER
+           MAIN CONTAINER & PAGE SECTIONS
         ---------------------------------- */
         .container {
             width: 100%;
             max-width: 1050px;
             margin: 0 auto;
             padding: 0 15px;
+        }
+
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* 1. COUNTDOWN SECTION */
@@ -357,7 +404,6 @@
             color: var(--text-dark);
         }
 
-        /* Semester Tabs */
         .semester-tabs {
             display: flex;
             gap: 8px;
@@ -384,7 +430,6 @@
             color: white;
         }
 
-        /* Subject Cards Grid */
         .subject-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -494,7 +539,106 @@
         }
 
         /* ----------------------------------
-           4. SIGN IN / SIGN UP MODAL POPUP
+           4. CODING HUB & IN-BROWSER EDITOR
+        ---------------------------------- */
+        .coding-section {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .editor-top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .lang-selector {
+            display: flex;
+            gap: 8px;
+        }
+
+        .lang-btn {
+            background: #0f172a;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .editor-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .editor-box, .output-box {
+            background: var(--editor-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .editor-header {
+            background: #1e293b;
+            padding: 10px 15px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        textarea.code-input {
+            width: 100%;
+            height: 250px;
+            background: var(--editor-bg);
+            color: #38bdf8;
+            border: none;
+            padding: 15px;
+            font-family: 'Fira Code', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            resize: vertical;
+            outline: none;
+        }
+
+        .output-frame {
+            width: 100%;
+            height: 200px;
+            background: #ffffff;
+            border: none;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
+
+        .c-compiler-container {
+            width: 100%;
+            height: 450px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        /* ----------------------------------
+           5. SIGN IN / SIGN UP MODAL POPUP
         ---------------------------------- */
         .modal-overlay {
             position: fixed;
@@ -592,12 +736,13 @@
             background: var(--primary-dark);
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; align-items: stretch; }
+            .nav-tabs { justify-content: center; }
             .countdown-section { flex-direction: column; align-items: flex-start; }
             .countdown-timer { width: 100%; justify-content: space-between; }
             .course-row { grid-template-columns: 1fr 1fr 1fr 35px; }
             .subject-grid { grid-template-columns: 1fr; }
-            .navbar { padding: 15px; }
         }
     </style>
 </head>
@@ -608,16 +753,30 @@
     <div class="splash-content">
         <i class="fa-solid fa-graduation-cap splash-icon"></i>
         <h1 class="splash-title">Semester Resources Hub</h1>
-        <p class="splash-sub">Academic Dashboard & Tools</p>
+        <p class="splash-sub">Academic Dashboard & Coding Playground</p>
     </div>
 </div>
 
-<!-- NAVBAR -->
+<!-- NAVBAR & TABS -->
 <nav class="navbar">
     <a href="#" class="nav-logo">
         <i class="fa-solid fa-graduation-cap"></i>
         <span>CSE Hub</span>
     </a>
+
+    <!-- TOP TAB BUTTONS -->
+    <div class="nav-tabs">
+        <button class="nav-tab-btn active" onclick="switchMainTab('academic', this)">
+            <i class="fa-solid fa-book-open"></i> Academic Hub
+        </button>
+        <button class="nav-tab-btn" onclick="switchMainTab('cgpa', this)">
+            <i class="fa-solid fa-calculator"></i> CGPA Calculator
+        </button>
+        <button class="nav-tab-btn" onclick="switchMainTab('coding', this)">
+            <i class="fa-solid fa-code"></i> Coding Hub
+        </button>
+    </div>
+
     <button class="nav-auth-btn" id="authBtn" onclick="openAuthModal()">
         <i class="fa-solid fa-right-to-bracket"></i> <span id="authBtnText">Sign In</span>
     </button>
@@ -625,241 +784,279 @@
 
 <div class="container">
 
-    <!-- 1. LIVE COUNTDOWN SECTION -->
-    <section class="countdown-section">
-        <div class="countdown-header">
-            <span class="badge-live"><i class="fa-solid fa-bell fa-bounce"></i> Upcoming Event</span>
-            <h2 id="event-title">পরবর্তী মিড-টার্ম পরীক্ষা</h2>
-        </div>
-        <div class="countdown-timer">
-            <div class="time-box"><span id="days">00</span><small>দিন</small></div>
-            <div class="time-box"><span id="hours">00</span><small>ঘণ্টা</small></div>
-            <div class="time-box"><span id="minutes">00</span><small>মিনিট</small></div>
-            <div class="time-box"><span id="seconds">00</span><small>সেকেন্ড</small></div>
-        </div>
-    </section>
-
-    <!-- 2. CGPA CALCULATOR SECTION -->
-    <section class="cgpa-section">
-        <div class="section-header">
-            <i class="fa-solid fa-calculator"></i>
-            <h2>সিজিপিএ ক্যালকুলেটর</h2>
-        </div>
-
-        <div id="course-list">
-            <div class="course-row">
-                <input type="text" placeholder="কোর্সের নাম (ঐচ্ছিক)">
-                <input type="number" class="credit" placeholder="ক্রেডিট" min="0" step="0.5" value="3">
-                <select class="grade">
-                    <option value="4.00">A+ (4.00)</option>
-                    <option value="3.75">A (3.75)</option>
-                    <option value="3.50">A- (3.50)</option>
-                    <option value="3.25">B+ (3.25)</option>
-                    <option value="3.00">B (3.00)</option>
-                    <option value="2.75">B- (2.75)</option>
-                    <option value="2.50">C+ (2.50)</option>
-                    <option value="2.25">C (2.25)</option>
-                    <option value="2.00">D (2.00)</option>
-                    <option value="0.00">F (0.00)</option>
-                </select>
-                <button class="btn-remove" onclick="removeRow(this)"><i class="fa-solid fa-trash"></i></button>
+    <!-- PAGE SECTION 1: ACADEMIC RESOURCES HUB -->
+    <div id="academic-sec" class="page-section active">
+        <!-- Live Countdown Section -->
+        <section class="countdown-section">
+            <div class="countdown-header">
+                <span class="badge-live"><i class="fa-solid fa-bell fa-bounce"></i> Upcoming Event</span>
+                <h2 id="event-title">পরবর্তী মিড-টার্ম পরীক্ষা</h2>
             </div>
-        </div>
+            <div class="countdown-timer">
+                <div class="time-box"><span id="days">00</span><small>দিন</small></div>
+                <div class="time-box"><span id="hours">00</span><small>ঘণ্টা</small></div>
+                <div class="time-box"><span id="minutes">00</span><small>মিনিট</small></div>
+                <div class="time-box"><span id="seconds">00</span><small>সেকেন্ড</small></div>
+            </div>
+        </section>
 
-        <div class="controls">
-            <button class="btn btn-secondary" onclick="addCourseRow()"><i class="fa-solid fa-plus"></i> কোর্স যোগ করুন</button>
-            <button class="btn btn-primary" onclick="calculateCGPA()"><i class="fa-solid fa-check"></i> সিজিপিএ হিসাব করুন</button>
-        </div>
+        <!-- Semester Resources Grid -->
+        <section class="resources-section">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="subjectSearch" onkeyup="filterSubjects()" placeholder="Find by the name or code of any subject...">
+            </div>
 
-        <div class="result-box">
-            <small style="color: var(--text-muted);">আপনার অর্জিত GPA / CGPA</small>
-            <div class="cgpa-val" id="cgpa-result">0.00</div>
-        </div>
-    </section>
+            <div class="semester-tabs">
+                <button class="tab-btn active" onclick="filterSemester('all', this)">All semesters</button>
+                <button class="tab-btn" onclick="filterSemester('1st', this)">1st Semester</button>
+                <button class="tab-btn" onclick="filterSemester('2nd', this)">2nd Semester</button>
+                <button class="tab-btn" onclick="filterSemester('3rd', this)">3rd Semester</button>
+                <button class="tab-btn" onclick="filterSemester('4th', this)">4th Semester</button>
+                <button class="tab-btn" onclick="filterSemester('5th', this)">5th Semester</button>
+                <button class="tab-btn" onclick="filterSemester('6th', this)">6th Semester</button>
+                <button class="tab-btn" onclick="filterSemester('7th', this)">7th Semester</button>
+                <button class="tab-btn" onclick="filterSemester('8th', this)">8th Semester</button>
+            </div>
 
-    <!-- 3. SEMESTER RESOURCES HUB -->
-    <section class="resources-section">
-        <!-- Search Input -->
-        <div class="search-box">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" id="subjectSearch" onkeyup="filterSubjects()" placeholder="Find by the name or code of any subject...">
-        </div>
-
-        <!-- Semester Filter Tabs -->
-        <div class="semester-tabs">
-            <button class="tab-btn active" onclick="filterSemester('all', this)">All semesters</button>
-            <button class="tab-btn" onclick="filterSemester('1st', this)">1st Semester</button>
-            <button class="tab-btn" onclick="filterSemester('2nd', this)">2nd Semester</button>
-            <button class="tab-btn" onclick="filterSemester('3rd', this)">3rd Semester</button>
-            <button class="tab-btn" onclick="filterSemester('4th', this)">4th Semester</button>
-            <button class="tab-btn" onclick="filterSemester('5th', this)">5th Semester</button>
-            <button class="tab-btn" onclick="filterSemester('6th', this)">6th Semester</button>
-            <button class="tab-btn" onclick="filterSemester('7th', this)">7th Semester</button>
-            <button class="tab-btn" onclick="filterSemester('8th', this)">8th Semester</button>
-        </div>
-
-        <!-- Subject Cards Grid -->
-        <div class="subject-grid" id="subjectGrid">
-            
-            <!-- 2nd Semester: Theory - Structured Programming Language -->
-            <div class="subject-card" data-semester="2nd">
-                <div>
-                    <div class="card-top">
-                        <span class="semester-badge">2nd Semester</span>
-                        <span class="credit-badge">3 Credit</span>
+            <div class="subject-grid" id="subjectGrid">
+                <!-- 2nd Semester Subject Cards -->
+                <div class="subject-card" data-semester="2nd">
+                    <div>
+                        <div class="card-top">
+                            <span class="semester-badge">2nd Semester</span>
+                            <span class="credit-badge">3 Credit</span>
+                        </div>
+                        <span class="subject-code">CSE 121</span>
+                        <h3 class="subject-title">Structured Programming Language</h3>
+                        <p class="subject-desc">Theory & Syntax, Flowcharts, Loops, Arrays, Functions, and C Theory Notes.</p>
                     </div>
-                    <span class="subject-code">CSE 121</span>
-                    <h3 class="subject-title">Structured Programming Language</h3>
-                    <p class="subject-desc">Theory & Syntax, Flowcharts, Loops, Arrays, Functions, and C Theory Notes.</p>
-                </div>
-                <div class="card-actions">
-                    <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
-                    <a href="#" class="btn-link"><i class="fa-solid fa-link"></i></a>
-                </div>
-            </div>
-
-            <!-- 2nd Semester: Sessional - Structured Programming Language Sessional -->
-            <div class="subject-card" data-semester="2nd">
-                <div>
-                    <div class="card-top">
-                        <span class="semester-badge">2nd Semester</span>
-                        <span class="credit-badge">1.5 Credit</span>
+                    <div class="card-actions">
+                        <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
+                        <a href="#" class="btn-link"><i class="fa-solid fa-link"></i></a>
                     </div>
-                    <span class="subject-code">CSE 122</span>
-                    <h3 class="subject-title">Structured Programming Language Sessional</h3>
-                    <p class="subject-desc">Lab Code Files, C Programs, Assignments & Practical Implementation.</p>
                 </div>
-                <div class="card-actions">
-                    <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
-                    <a href="#" class="btn-link"><i class="fa-solid fa-link"></i></a>
-                </div>
-            </div>
 
-            <!-- 2nd Semester: Theory - History of the Emergence of Bangladesh -->
-            <div class="subject-card" data-semester="2nd">
-                <div>
-                    <div class="card-top">
-                        <span class="semester-badge">2nd Semester</span>
-                        <span class="credit-badge">2 Credit</span>
+                <div class="subject-card" data-semester="2nd">
+                    <div>
+                        <div class="card-top">
+                            <span class="semester-badge">2nd Semester</span>
+                            <span class="credit-badge">1.5 Credit</span>
+                        </div>
+                        <span class="subject-code">CSE 122</span>
+                        <h3 class="subject-title">Structured Programming Language Sessional</h3>
+                        <p class="subject-desc">Lab Code Files, C Programs, Assignments & Practical Implementation.</p>
                     </div>
-                    <span class="subject-code">GED 121</span>
-                    <h3 class="subject-title">History of the Emergence of Bangladesh</h3>
-                    <p class="subject-desc">Historical Background, 1952 Language Movement, 1971 Liberation War Notes.</p>
-                </div>
-                <div class="card-actions">
-                    <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
-                    <a href="#" class="btn-link"><i class="fa-solid fa-link"></i></a>
-                </div>
-            </div>
-
-            <!-- 2nd Semester: Theory - English Writing and Listening -->
-            <div class="subject-card" data-semester="2nd">
-                <div>
-                    <div class="card-top">
-                        <span class="semester-badge">2nd Semester</span>
-                        <span class="credit-badge">3 Credit</span>
+                    <div class="card-actions">
+                        <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
+                        <a href="#" class="btn-link"><i class="fa-solid fa-link"></i></a>
                     </div>
-                    <span class="subject-code">ENG 121</span>
-                    <h3 class="subject-title">English Writing and Listening</h3>
-                    <p class="subject-desc">Essay & Report Writing Techniques, Grammar, and Listening Scripts.</p>
                 </div>
-                <div class="card-actions">
-                    <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
-                    <a href="#" class="btn-link"><i class="fa-solid fa-link"></i></a>
-                </div>
-            </div>
 
-            <!-- 2nd Semester: Math Part - MATH II -->
-            <div class="subject-card" data-semester="2nd">
-                <div>
-                    <div class="card-top">
-                        <span class="semester-badge">2nd Semester</span>
-                        <span class="credit-badge">3 Credit</span>
+                <div class="subject-card" data-semester="2nd">
+                    <div>
+                        <div class="card-top">
+                            <span class="semester-badge">2nd Semester</span>
+                            <span class="credit-badge">2 Credit</span>
+                        </div>
+                        <span class="subject-code">GED 121</span>
+                        <h3 class="subject-title">History of the Emergence of Bangladesh</h3>
+                        <p class="subject-desc">Historical Background, 1952 Language Movement, 1971 Liberation War Notes.</p>
                     </div>
-                    <span class="subject-code">MATH 121</span>
-                    <h3 class="subject-title">MATH II (Vector Analysis, Linear Algebra, Geometry & Fourier)</h3>
-                    <p class="subject-desc">Mathematical Formulas, Vector Analysis, Matrices, Coordinate Geometry & Fourier Solutions.</p>
-                </div>
-                <div class="card-actions">
-                    <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
-                    <a href="#" class="btn-link"><i class="fa-solid fa-link"></i></a>
-                </div>
-            </div>
-
-            <!-- 2nd Semester: Theory - Electronic Devices and Circuits -->
-            <div class="subject-card" data-semester="2nd">
-                <div>
-                    <div class="card-top">
-                        <span class="semester-badge">2nd Semester</span>
-                        <span class="credit-badge">3 Credit</span>
+                    <div class="card-actions">
+                        <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
+                        <a href="#" class="btn-link"><i class="fa-solid fa-link"></i></a>
                     </div>
-                    <span class="subject-code">EEE 121</span>
-                    <h3 class="subject-title">Electronic Devices and Circuits</h3>
-                    <p class="subject-desc">Semiconductors, Diodes, Transistors, BJT, FET Theory & Circuit Diagrams.</p>
                 </div>
-                <div class="card-actions">
-                    <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
-                    <a href="#" class="btn-link"><i class="fa-solid fa-link"></i></a>
-                </div>
-            </div>
 
-            <!-- 2nd Semester: Sessional - Electronic Devices and Circuits Sessional -->
-            <div class="subject-card" data-semester="2nd">
-                <div>
-                    <div class="card-top">
-                        <span class="semester-badge">2nd Semester</span>
-                        <span class="credit-badge">1.5 Credit</span>
+                <div class="subject-card" data-semester="2nd">
+                    <div>
+                        <div class="card-top">
+                            <span class="semester-badge">2nd Semester</span>
+                            <span class="credit-badge">3 Credit</span>
+                        </div>
+                        <span class="subject-code">ENG 121</span>
+                        <h3 class="subject-title">English Writing and Listening</h3>
+                        <p class="subject-desc">Essay & Report Writing Techniques, Grammar, and Listening Scripts.</p>
                     </div>
-                    <span class="subject-code">EEE 122</span>
-                    <h3 class="subject-title">Electronic Devices and Circuits Sessional</h3>
-                    <p class="subject-desc">Circuit Design Practical Sheets, Oscilloscope Measurements & Lab Reports.</p>
-                </div>
-                <div class="card-actions">
-                    <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
-                    <a href="#" class="btn-link"><i class="fa-solid fa-link"></i></a>
-                </div>
-            </div>
-
-            <!-- 2nd Semester: Theory - Physics I -->
-            <div class="subject-card" data-semester="2nd">
-                <div>
-                    <div class="card-top">
-                        <span class="semester-badge">2nd Semester</span>
-                        <span class="credit-badge">3 Credit</span>
+                    <div class="card-actions">
+                        <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
+                        <a href="#" class="btn-link"><i class="fa-solid fa-link"></i></a>
                     </div>
-                    <span class="subject-code">PHY 121</span>
-                    <h3 class="subject-title">Physics I</h3>
-                    <p class="subject-desc">Mechanics, Waves, Oscillations, Optics, and Thermodynamics Lecture Notes.</p>
                 </div>
-                <div class="card-actions">
-                    <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
-                    <a href="#" class="btn-link"><i class="fa-solid fa-link"></i></a>
-                </div>
-            </div>
 
-            <!-- 2nd Semester: Sessional - Basic Physics Sessional -->
-            <div class="subject-card" data-semester="2nd">
-                <div>
-                    <div class="card-top">
-                        <span class="semester-badge">2nd Semester</span>
-                        <span class="credit-badge">1 Credit</span>
+                <div class="subject-card" data-semester="2nd">
+                    <div>
+                        <div class="card-top">
+                            <span class="semester-badge">2nd Semester</span>
+                            <span class="credit-badge">3 Credit</span>
+                        </div>
+                        <span class="subject-code">MATH 121</span>
+                        <h3 class="subject-title">MATH II (Vector Analysis, Linear Algebra, Geometry & Fourier)</h3>
+                        <p class="subject-desc">Mathematical Formulas, Vector Analysis, Matrices, Coordinate Geometry & Fourier Solutions.</p>
                     </div>
-                    <span class="subject-code">PHY 124</span>
-                    <h3 class="subject-title">Basic Physics Sessional</h3>
-                    <p class="subject-desc">Physics Lab Experiments, Data Tables, Graph Calculations & Lab Reports.</p>
+                    <div class="card-actions">
+                        <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
+                        <a href="#" class="btn-link"><i class="fa-solid fa-link"></i></a>
+                    </div>
                 </div>
-                <div class="card-actions">
-                    <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
-                    <a href="#" class="btn-link"><i class="fa-solid fa-link"></i></a>
+
+                <div class="subject-card" data-semester="2nd">
+                    <div>
+                        <div class="card-top">
+                            <span class="semester-badge">2nd Semester</span>
+                            <span class="credit-badge">3 Credit</span>
+                        </div>
+                        <span class="subject-code">EEE 121</span>
+                        <h3 class="subject-title">Electronic Devices and Circuits</h3>
+                        <p class="subject-desc">Semiconductors, Diodes, Transistors, BJT, FET Theory & Circuit Diagrams.</p>
+                    </div>
+                    <div class="card-actions">
+                        <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
+                        <a href="#" class="btn-link"><i class="fa-solid fa-link"></i></a>
+                    </div>
+                </div>
+
+                <div class="subject-card" data-semester="2nd">
+                    <div>
+                        <div class="card-top">
+                            <span class="semester-badge">2nd Semester</span>
+                            <span class="credit-badge">1.5 Credit</span>
+                        </div>
+                        <span class="subject-code">EEE 122</span>
+                        <h3 class="subject-title">Electronic Devices and Circuits Sessional</h3>
+                        <p class="subject-desc">Circuit Design Practical Sheets, Oscilloscope Measurements & Lab Reports.</p>
+                    </div>
+                    <div class="card-actions">
+                        <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
+                        <a href="#" class="btn-link"><i class="fa-solid fa-link"></i></a>
+                    </div>
+                </div>
+
+                <div class="subject-card" data-semester="2nd">
+                    <div>
+                        <div class="card-top">
+                            <span class="semester-badge">2nd Semester</span>
+                            <span class="credit-badge">3 Credit</span>
+                        </div>
+                        <span class="subject-code">PHY 121</span>
+                        <h3 class="subject-title">Physics I</h3>
+                        <p class="subject-desc">Mechanics, Waves, Oscillations, Optics, and Thermodynamics Lecture Notes.</p>
+                    </div>
+                    <div class="card-actions">
+                        <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
+                        <a href="#" class="btn-link"><i class="fa-solid fa-link"></i></a>
+                    </div>
+                </div>
+
+                <div class="subject-card" data-semester="2nd">
+                    <div>
+                        <div class="card-top">
+                            <span class="semester-badge">2nd Semester</span>
+                            <span class="credit-badge">1 Credit</span>
+                        </div>
+                        <span class="subject-code">PHY 124</span>
+                        <h3 class="subject-title">Basic Physics Sessional</h3>
+                        <p class="subject-desc">Physics Lab Experiments, Data Tables, Graph Calculations & Lab Reports.</p>
+                    </div>
+                    <div class="card-actions">
+                        <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
+                        <a href="#" class="btn-link"><i class="fa-solid fa-link"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAGE SECTION 2: CGPA CALCULATOR -->
+    <div id="cgpa-sec" class="page-section">
+        <section class="cgpa-section">
+            <div class="section-header">
+                <i class="fa-solid fa-calculator"></i>
+                <h2>সিজিপিএ ক্যালকুলেটর</h2>
+            </div>
+
+            <div id="course-list">
+                <div class="course-row">
+                    <input type="text" placeholder="কোর্সের নাম (ঐচ্ছিক)">
+                    <input type="number" class="credit" placeholder="ক্রেডিট" min="0" step="0.5" value="3">
+                    <select class="grade">
+                        <option value="4.00">A+ (4.00)</option>
+                        <option value="3.75">A (3.75)</option>
+                        <option value="3.50">A- (3.50)</option>
+                        <option value="3.25">B+ (3.25)</option>
+                        <option value="3.00">B (3.00)</option>
+                        <option value="2.75">B- (2.75)</option>
+                        <option value="2.50">C+ (2.50)</option>
+                        <option value="2.25">C (2.25)</option>
+                        <option value="2.00">D (2.00)</option>
+                        <option value="0.00">F (0.00)</option>
+                    </select>
+                    <button class="btn-remove" onclick="removeRow(this)"><i class="fa-solid fa-trash"></i></button>
                 </div>
             </div>
 
-        </div>
-    </section>
+            <div class="controls">
+                <button class="btn btn-secondary" onclick="addCourseRow()"><i class="fa-solid fa-plus"></i> কোর্স যোগ করুন</button>
+                <button class="btn btn-primary" onclick="calculateCGPA()"><i class="fa-solid fa-check"></i> সিজিপিএ হিসাব করুন</button>
+            </div>
+
+            <div class="result-box">
+                <small style="color: var(--text-muted);">আপনার অর্জিত GPA / CGPA</small>
+                <div class="cgpa-val" id="cgpa-result">0.00</div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAGE SECTION 3: CODING HUB & CODE EDITOR -->
+    <div id="coding-sec" class="page-section">
+        <section class="coding-section">
+            <div class="editor-top-bar">
+                <div class="section-header" style="margin-bottom: 0;">
+                    <i class="fa-solid fa-terminal"></i>
+                    <h2>Code Editor & Live Compiler Playground</h2>
+                </div>
+                <div class="lang-selector">
+                    <button class="lang-btn active" id="btnModeWeb" onclick="switchCodeMode('web')">HTML / CSS / JS</button>
+                    <button class="lang-btn" id="btnModeC" onclick="switchCodeMode('c')">C / C++ Compiler</button>
+                </div>
+            </div>
+
+            <!-- HTML/CSS/JS LIVE PLAYGROUND -->
+            <div id="webCompilerView">
+                <div class="editor-container">
+                    <div class="editor-box">
+                        <div class="editor-header">
+                            <span><i class="fa-solid fa-code"></i> Source Code Editor</span>
+                            <div>
+                                <button class="btn btn-secondary" style="padding: 4px 10px; font-size: 11px;" onclick="loadSampleCode()">Sample Code</button>
+                                <button class="btn btn-primary" style="padding: 4px 10px; font-size: 11px;" onclick="runWebCode()"><i class="fa-solid fa-play"></i> Run Code</button>
+                            </div>
+                        </div>
+                        <textarea class="code-input" id="htmlCodeInput" placeholder="Write your HTML/CSS/JS code here..."></textarea>
+                    </div>
+
+                    <div class="output-box">
+                        <div class="editor-header">
+                            <span><i class="fa-solid fa-desktop"></i> Live Preview Output</span>
+                        </div>
+                        <iframe id="webOutputFrame" class="output-frame"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- C / C++ ONLINE COMPILER EMBED -->
+            <div id="cCompilerView" style="display: none;">
+                <div class="c-compiler-container">
+                    <iframe src="https://www.programiz.com/c-programming/online-compiler/" width="100%" height="100%" frameborder="0"></iframe>
+                </div>
+            </div>
+        </section>
+    </div>
 
 </div>
 
-<!-- 4. SIGN IN / SIGN UP MODAL -->
+<!-- SIGN IN / SIGN UP MODAL -->
 <div class="modal-overlay" id="authModal">
     <div class="auth-modal">
         <i class="fa-solid fa-xmark close-modal" onclick="closeAuthModal()"></i>
@@ -869,7 +1066,6 @@
             <button class="auth-tab-btn" id="tabSignUp" onclick="switchTab('signup')">Sign Up</button>
         </div>
 
-        <!-- Sign In Form -->
         <form class="auth-form" id="signInForm" onsubmit="handleAuth(event, 'signin')">
             <div class="form-group">
                 <label>Email Address</label>
@@ -882,7 +1078,6 @@
             <button type="submit" class="btn-auth-submit">Sign In</button>
         </form>
 
-        <!-- Sign Up Form -->
         <form class="auth-form" id="signUpForm" onsubmit="handleAuth(event, 'signup')" style="display: none;">
             <div class="form-group">
                 <label>Full Name</label>
@@ -907,10 +1102,24 @@
         setTimeout(() => {
             const splash = document.getElementById("splash-screen");
             splash.classList.add("splash-hidden");
-        }, 2500); // ২.৫ সেকেন্ড পর এনিমেশন বন্ধ হয়ে মূল পেজ ওপেন হবে
+        }, 2500);
+        
+        // Initial Sample Code
+        loadSampleCode();
     });
 
-    // 1. COUNTDOWN TIMER LOGIC (27 Feb 2027)
+    // NAVIGATION TABS SWITCHING
+    function switchMainTab(sectionId, btn) {
+        document.querySelectorAll('.nav-tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
+        if (sectionId === 'academic') document.getElementById('academic-sec').classList.add('active');
+        else if (sectionId === 'cgpa') document.getElementById('cgpa-sec').classList.add('active');
+        else if (sectionId === 'coding') document.getElementById('coding-sec').classList.add('active');
+    }
+
+    // 1. COUNTDOWN TIMER LOGIC
     const targetDate = new Date("2027-02-27T10:00:00").getTime();
 
     function updateCountdown() {
@@ -1014,12 +1223,48 @@
         });
     }
 
-    // 4. SIGN IN / SIGN UP MODAL LOGIC
+    // 4. CODING HUB FUNCTIONS
+    function switchCodeMode(mode) {
+        if(mode === 'web') {
+            document.getElementById('webCompilerView').style.display = 'block';
+            document.getElementById('cCompilerView').style.display = 'none';
+            document.getElementById('btnModeWeb').classList.add('active');
+            document.getElementById('btnModeC').classList.remove('active');
+        } else {
+            document.getElementById('webCompilerView').style.display = 'none';
+            document.getElementById('cCompilerView').style.display = 'block';
+            document.getElementById('btnModeC').classList.add('active');
+            document.getElementById('btnModeWeb').classList.remove('active');
+        }
+    }
+
+    function runWebCode() {
+        const code = document.getElementById('htmlCodeInput').value;
+        const frame = document.getElementById('webOutputFrame').contentWindow.document;
+        frame.open();
+        frame.write(code);
+        frame.close();
+    }
+
+    function loadSampleCode() {
+        const sample = `<style>
+  body { font-family: Arial, sans-serif; text-align: center; padding-top: 30px; background: #0f172a; color: #38bdf8; }
+  h1 { font-size: 24px; color: #3b82f6; }
+  button { padding: 10px 20px; background: #3b82f6; color: white; border: none; border-radius: 8px; cursor: pointer; }
+</style>
+
+<h1>Hello, CSE Student!</h1>
+<p>Welcome to your live HTML/CSS/JS Playground.</p>
+<button onclick="alert('Happy Coding!')">Click Me</button>`;
+        document.getElementById('htmlCodeInput').value = sample;
+        runWebCode();
+    }
+
+    // 5. SIGN IN / SIGN UP MODAL LOGIC
     let isLoggedIn = false;
 
     function openAuthModal() {
         if (isLoggedIn) {
-            // Logout functionality
             isLoggedIn = false;
             document.getElementById('authBtnText').innerText = 'Sign In';
             alert('আপনি সফলভাবে সাইন আউট হয়েছেন।');
