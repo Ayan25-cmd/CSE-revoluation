@@ -16,17 +16,32 @@
             background-color: #0b132b;
             color: #ffffff;
             padding: 20px;
+            animation: fadeInPage 1s ease-in-out;
+        }
+
+        /* Initial Entrance Animation */
+        @keyframes fadeInPage {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         header {
             text-align: center;
             margin-bottom: 25px;
+            animation: fadeInPage 1.2s ease-in-out;
         }
 
         header h1 {
             color: #48cae4;
             font-size: 28px;
             margin-bottom: 10px;
+            letter-spacing: 1px;
         }
 
         /* Notice Banner */
@@ -39,6 +54,7 @@
             text-align: center;
             font-size: 14px;
             border-left: 5px solid #e63946;
+            animation: fadeInPage 1.4s ease-in-out;
         }
 
         /* Utility Tools Section (CGPA Calculator etc.) */
@@ -48,6 +64,7 @@
             gap: 15px;
             margin-bottom: 30px;
             flex-wrap: wrap;
+            animation: fadeInPage 1.6s ease-in-out;
         }
 
         .tool-card {
@@ -65,6 +82,7 @@
         .tool-card:hover {
             background-color: #3a506b;
             color: #ffffff;
+            transform: translateY(-2px);
         }
 
         /* Main Grid Container */
@@ -74,6 +92,7 @@
             gap: 20px;
             max-width: 1200px;
             margin: 0 auto;
+            animation: fadeInPage 1.8s ease-in-out;
         }
 
         .card {
@@ -85,6 +104,12 @@
             flex-direction: column;
             justify-content: space-between;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(72, 202, 228, 0.2);
         }
 
         .card-header {
@@ -241,7 +266,7 @@
                 <div class="course-title">MATH II (Vector Analysis, Linear Algebra, Geometry & Fourier)</div>
                 <div class="course-desc">Mathematical Formulas, Vector Analysis, Matrices, Coordinate Geometry & Fourier Solutions.</div>
             </div>
-                <div class="action-area">
+            <div class="action-area">
                 <div class="btn-group">
                     <a href="#" class="btn-main">☁ Download</a>
                     <a href="#" class="btn-icon">🔗</a>
