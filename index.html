@@ -16,71 +16,25 @@
             background-color: #0b132b;
             color: #ffffff;
             padding: 20px;
-            overflow-x: hidden;
+            animation: fadeInPage 1s ease-in-out;
         }
 
-        /* --- EMOJI PRELOADER ANIMATION --- */
-        #preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #0b132b;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
-        }
-
-        .emoji-spinner {
-            font-size: 65px;
-            animation: bounceRotate 1.5s infinite ease-in-out;
-            margin-bottom: 15px;
-        }
-
-        .loader-text {
-            color: #48cae4;
-            font-size: 18px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            animation: pulseText 1.5s infinite ease-in-out;
-        }
-
-        @keyframes bounceRotate {
-            0% {
-                transform: scale(0.8) rotate(0deg);
+        /* Initial Entrance Animation */
+        @keyframes fadeInPage {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
-            50% {
-                transform: scale(1.2) rotate(180deg);
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
-            100% {
-                transform: scale(0.8) rotate(360deg);
-            }
-        }
-
-        @keyframes pulseText {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 1; }
-        }
-
-        /* --- MAIN WEBSITE CONTENT --- */
-        #main-content {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1s ease, transform 1s ease;
-        }
-
-        #main-content.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         header {
             text-align: center;
             margin-bottom: 25px;
+            animation: fadeInPage 1.2s ease-in-out;
         }
 
         header h1 {
@@ -100,15 +54,17 @@
             text-align: center;
             font-size: 14px;
             border-left: 5px solid #e63946;
+            animation: fadeInPage 1.4s ease-in-out;
         }
 
-        /* Utility Tools Section */
+        /* Utility Tools Section (CGPA Calculator etc.) */
         .utility-section {
             display: flex;
             justify-content: center;
             gap: 15px;
             margin-bottom: 30px;
             flex-wrap: wrap;
+            animation: fadeInPage 1.6s ease-in-out;
         }
 
         .tool-card {
@@ -136,6 +92,7 @@
             gap: 20px;
             max-width: 1200px;
             margin: 0 auto;
+            animation: fadeInPage 1.8s ease-in-out;
         }
 
         .card {
@@ -260,174 +217,164 @@
 </head>
 <body>
 
-    <!-- EMOJI ANIMATION PRELOADER -->
-    <div id="preloader">
-        <div class="emoji-spinner">🚀</div>
-        <div class="loader-text">CSE REVOLUTION LOADING...</div>
+    <header>
+        <h1>CSE Revolution</h1>
+        <p style="color: #a0aec0;">2nd Semester Academic Portal</p>
+    </header>
+
+    <!-- Midterm Notice Banner -->
+    <div class="notice-banner">
+        📢 <strong>Midterm Exam Notice:</strong> Check your updated midterm examination schedule and guidelines here.
     </div>
 
-    <!-- MAIN WEBSITE CONTENT -->
-    <div id="main-content">
+    <!-- Utility Section (CGPA Calculator) -->
+    <div class="utility-section">
+        <a href="#" class="tool-card">🧮 CGPA Calculator</a>
+        <a href="#" class="tool-card">📅 Midterm Routine & Schedule</a>
+    </div>
 
-        <header>
-            <h1>CSE Revolution</h1>
-            <p style="color: #a0aec0;">2nd Semester Academic Portal</p>
-        </header>
+    <!-- Course Cards Grid -->
+    <div class="grid-container">
 
-        <!-- Midterm Notice Banner -->
-        <div class="notice-banner">
-            📢 <strong>Midterm Exam Notice:</strong> Check your updated midterm examination schedule and guidelines here.
+        <!-- ENG 121 -->
+        <div class="card">
+            <div>
+                <div class="card-header">
+                    <span class="badge-semester">2nd Semester</span>
+                    <span class="badge-credit">3 Credit</span>
+                </div>
+                <div class="course-code">ENG 121</div>
+                <div class="course-title">English Writing and Listening</div>
+                <div class="course-desc">Essay & Report Writing Techniques, Grammar, and Listening Scripts.</div>
+            </div>
+            <div class="action-area">
+                <!-- ENG 121 Syllabus PDF Button -->
+                <a href="eng121-syllabus.pdf" class="pdf-btn" target="_blank">
+                    👁 View / Download Syllabus PDF
+                </a>
+                <div class="btn-group">
+                    <a href="#" class="btn-main">☁ Download</a>
+                    <a href="#" class="btn-icon">🔗</a>
+                </div>
+            </div>
         </div>
 
-        <!-- Utility Section (CGPA Calculator) -->
-        <div class="utility-section">
-            <a href="#" class="tool-card">🧮 CGPA Calculator</a>
-            <a href="#" class="tool-card">📅 Midterm Routine & Schedule</a>
+        <!-- MATH 121 -->
+        <div class="card">
+            <div>
+                <div class="card-header">
+                    <span class="badge-semester">2nd Semester</span>
+                    <span class="badge-credit">3 Credit</span>
+                </div>
+                <div class="course-code">MATH 121</div>
+                <div class="course-title">MATH II (Vector Analysis, Linear Algebra, Geometry & Fourier)</div>
+                <div class="course-desc">Mathematical Formulas, Vector Analysis, Matrices, Coordinate Geometry & Fourier Solutions.</div>
+            </div>
+            <div class="action-area">
+                <!-- MATH 121 Syllabus PDF Button -->
+                <a href="math121-syllabus.pdf" class="pdf-btn" target="_blank">
+                    👁 View / Download Syllabus PDF
+                </a>
+                <div class="btn-group">
+                    <a href="#" class="btn-main">☁ Download</a>
+                    <a href="#" class="btn-icon">🔗</a>
+                </div>
+            </div>
         </div>
 
-        <!-- Course Cards Grid -->
-        <div class="grid-container">
-
-            <!-- ENG 121 -->
-            <div class="card">
-                <div>
-                    <div class="card-header">
-                        <span class="badge-semester">2nd Semester</span>
-                        <span class="badge-credit">3 Credit</span>
-                    </div>
-                    <div class="course-code">ENG 121</div>
-                    <div class="course-title">English Writing and Listening</div>
-                    <div class="course-desc">Essay & Report Writing Techniques, Grammar, and Listening Scripts.</div>
+        <!-- EEE 121 -->
+        <div class="card">
+            <div>
+                <div class="card-header">
+                    <span class="badge-semester">2nd Semester</span>
+                    <span class="badge-credit">3 Credit</span>
                 </div>
-                <div class="action-area">
-                    <div class="btn-group">
-                        <a href="#" class="btn-main">☁ Download</a>
-                        <a href="#" class="btn-icon">🔗</a>
-                    </div>
+                <div class="course-code">EEE 121</div>
+                <div class="course-title">Electronic Devices and Circuits</div>
+                <div class="course-desc">Semiconductors, Diodes, Transistors, BJT, FET Theory & Circuit Diagrams.</div>
+            </div>
+            <div class="action-area">
+                <!-- EEE 121 Syllabus PDF Button -->
+                <a href="eee121-syllabus.pdf" class="pdf-btn" target="_blank">
+                    👁 View / Download Syllabus PDF
+                </a>
+                <div class="btn-group">
+                    <a href="#" class="btn-main">☁ Download</a>
+                    <a href="#" class="btn-icon">🔗</a>
                 </div>
             </div>
+        </div>
 
-            <!-- MATH 121 -->
-            <div class="card">
-                <div>
-                    <div class="card-header">
-                        <span class="badge-semester">2nd Semester</span>
-                        <span class="badge-credit">3 Credit</span>
-                    </div>
-                    <div class="course-code">MATH 121</div>
-                    <div class="course-title">MATH II (Vector Analysis, Linear Algebra, Geometry & Fourier)</div>
-                    <div class="course-desc">Mathematical Formulas, Vector Analysis, Matrices, Coordinate Geometry & Fourier Solutions.</div>
+        <!-- EEE 122 -->
+        <div class="card">
+            <div>
+                <div class="card-header">
+                    <span class="badge-semester">2nd Semester</span>
+                    <span class="badge-credit">1.5 Credit</span>
                 </div>
-                <div class="action-area">
-                    <div class="btn-group">
-                        <a href="#" class="btn-main">☁ Download</a>
-                        <a href="#" class="btn-icon">🔗</a>
-                    </div>
+                <div class="course-code">EEE 122</div>
+                <div class="course-title">Electronic Devices and Circuits Sessional</div>
+                <div class="course-desc">Circuit Design Practical Sheets, Oscilloscope Measurements & Lab Reports.</div>
+            </div>
+            <div class="action-area">
+                <!-- EEE 122 Syllabus PDF Button -->
+                <a href="eee122-syllabus.pdf" class="pdf-btn" target="_blank">
+                    👁 View / Download Syllabus PDF
+                </a>
+                <div class="btn-group">
+                    <a href="#" class="btn-main">☁ Download</a>
+                    <a href="#" class="btn-icon">🔗</a>
                 </div>
             </div>
+        </div>
 
-            <!-- EEE 121 -->
-            <div class="card">
-                <div>
-                    <div class="card-header">
-                        <span class="badge-semester">2nd Semester</span>
-                        <span class="badge-credit">3 Credit</span>
-                    </div>
-                    <div class="course-code">EEE 121</div>
-                    <div class="course-title">Electronic Devices and Circuits</div>
-                    <div class="course-desc">Semiconductors, Diodes, Transistors, BJT, FET Theory & Circuit Diagrams.</div>
+        <!-- PHY 121 -->
+        <div class="card">
+            <div>
+                <div class="card-header">
+                    <span class="badge-semester">2nd Semester</span>
+                    <span class="badge-credit">3 Credit</span>
                 </div>
-                <div class="action-area">
-                    <!-- EEE 121 Syllabus PDF Button -->
-                    <a href="eee121-syllabus.pdf" class="pdf-btn" target="_blank">
-                        👁 View / Download Syllabus PDF
-                    </a>
-                    <div class="btn-group">
-                        <a href="#" class="btn-main">☁ Download</a>
-                        <a href="#" class="btn-icon">🔗</a>
-                    </div>
+                <div class="course-code">PHY 121</div>
+                <div class="course-title">Physics I</div>
+                <div class="course-desc">Structure of Matter, Heat & Thermodynamics, Electricity & Magnetism, Wave & Optics Syllabus PDF.</div>
+            </div>
+            <div class="action-area">
+                <!-- PHY 121 Syllabus PDF Button -->
+                <a href="PHY 121- Copy_CSE.pdf" class="pdf-btn" target="_blank">
+                    👁 View / Download Syllabus PDF
+                </a>
+                <div class="btn-group">
+                    <a href="#" class="btn-main">☁ Download</a>
+                    <a href="#" class="btn-icon">🔗</a>
                 </div>
             </div>
+        </div>
 
-            <!-- EEE 122 -->
-            <div class="card">
-                <div>
-                    <div class="card-header">
-                        <span class="badge-semester">2nd Semester</span>
-                        <span class="badge-credit">1.5 Credit</span>
-                    </div>
-                    <div class="course-code">EEE 122</div>
-                    <div class="course-title">Electronic Devices and Circuits Sessional</div>
-                    <div class="course-desc">Circuit Design Practical Sheets, Oscilloscope Measurements & Lab Reports.</div>
+        <!-- PHY 124 -->
+        <div class="card">
+            <div>
+                <div class="card-header">
+                    <span class="badge-semester">2nd Semester</span>
+                    <span class="badge-credit">1 Credit</span>
                 </div>
-                <div class="action-area">
-                    <div class="btn-group">
-                        <a href="#" class="btn-main">☁ Download</a>
-                        <a href="#" class="btn-icon">🔗</a>
-                    </div>
+                <div class="course-code">PHY 124</div>
+                <div class="course-title">Basic Physics Sessional</div>
+                <div class="course-desc">Physics Lab Experiments, Data Tables, Graph Calculations & Lab Reports.</div>
+            </div>
+            <div class="action-area">
+                <!-- PHY 124 Syllabus PDF Button -->
+                <a href="phy124-syllabus.pdf" class="pdf-btn" target="_blank">
+                    👁 View / Download Syllabus PDF
+                </a>
+                <div class="btn-group">
+                    <a href="#" class="btn-main">☁ Download</a>
+                    <a href="#" class="btn-icon">🔗</a>
                 </div>
             </div>
-
-            <!-- PHY 121 -->
-            <div class="card">
-                <div>
-                    <div class="card-header">
-                        <span class="badge-semester">2nd Semester</span>
-                        <span class="badge-credit">3 Credit</span>
-                    </div>
-                    <div class="course-code">PHY 121</div>
-                    <div class="course-title">Physics I</div>
-                    <div class="course-desc">Structure of Matter, Heat & Thermodynamics, Electricity & Magnetism, Wave & Optics Syllabus PDF.</div>
-                </div>
-                <div class="action-area">
-                    <!-- PHY 121 Syllabus PDF Button -->
-                    <a href="PHY 121- Copy_CSE.pdf" class="pdf-btn" target="_blank">
-                        👁 View / Download Syllabus PDF
-                    </a>
-                    <div class="btn-group">
-                        <a href="#" class="btn-main">☁ Download</a>
-                        <a href="#" class="btn-icon">🔗</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- PHY 124 -->
-            <div class="card">
-                <div>
-                    <div class="card-header">
-                        <span class="badge-semester">2nd Semester</span>
-                        <span class="badge-credit">1 Credit</span>
-                    </div>
-                    <div class="course-code">PHY 124</div>
-                    <div class="course-title">Basic Physics Sessional</div>
-                    <div class="course-desc">Physics Lab Experiments, Data Tables, Graph Calculations & Lab Reports.</div>
-                </div>
-                <div class="action-area">
-                    <div class="btn-group">
-                        <a href="#" class="btn-main">☁ Download</a>
-                        <a href="#" class="btn-icon">🔗</a>
-                    </div>
-                </div>
-            </div>
-
         </div>
 
     </div>
-
-    <!-- PRELOADER SCRIPT -->
-    <script>
-        window.addEventListener('load', function () {
-            const preloader = document.getElementById('preloader');
-            const mainContent = document.getElementById('main-content');
-
-            setTimeout(function () {
-                preloader.style.opacity = '0';
-                preloader.style.visibility = 'hidden';
-
-                mainContent.classList.add('visible');
-            }, 1200); // 1.2 Seconds Delay for Emoji Animation
-        });
-    </script>
 
 </body>
 </html>
